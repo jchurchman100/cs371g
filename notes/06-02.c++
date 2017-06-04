@@ -130,3 +130,17 @@ cin >> i >> j;
 input's >> takes l-value and l-value
 input's >> returns an l-value
 */
+
+// ---------
+// Questions
+// ---------
+
+/*
+What are the benefits of testing first?
+What are the benefits of continuous integration?
+What's the benefit of Docker?
+When overloading an operator, what properties can be changed, what properties can not be changed?
+What is an l-value, an r-value?
+What is the l-value/r-value nature of the arguments and the return of int's << operator, int's <<= operator, ostream's << operator?
+What is the l-value/r-value nature of the arguments and the return of int's >> operator, int's >>= operator, istream's >> operator?
+*/
