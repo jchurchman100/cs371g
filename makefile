@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := test
+.DEFAULT_GOAL :=  test
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := test
 
 FILES :=            \
+    .gitignore      \
     Collatz.c++     \
     Collatz.h       \
     Collatz.log     \
@@ -13,7 +14,6 @@ FILES :=            \
     TestCollatz.out
 
 # uncomment these:
-#    .gitignore                            \
 #    .travis.yml                           \
 #    collatz-tests/GitHubID-RunCollatz.in  \
 #    collatz-tests/GitHubID-RunCollatz.out \
