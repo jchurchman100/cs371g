@@ -117,9 +117,9 @@ sync:
     --include "Docker.txt"                   \
     --include "Hello.c++"                    \
     --include "Assertions.c++"               \
-    --include "Exceptons.c++"                \
-    --include "Exceptons2.c++"               \
-    --include "Exceptons3.c++"               \
+    --include "Exceptions.c++"               \
+    --include "Exceptions2.c++"              \
+    --include "Exceptions3.c++"              \
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \
