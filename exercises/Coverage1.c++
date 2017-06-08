@@ -12,7 +12,7 @@
 #include "Coverage1.h"
 
 TEST(CoverageFixture, test) {
-    ASSERT_EQ(cycle_length(1), 1);}
+    ASSERT_EQ(1, cycle_length(1));}
 
 /*
 % g++ -fprofile-arcs -ftest-coverage -pedantic -std=c++14 -Wall Coverage1.c++ -o Coverage1 -lgtest -lgtest_main -pthread
@@ -34,11 +34,11 @@ Running main() from gtest_main.cc
 
 
 
-% gcov -b Coverage1.c++ | grep -A 5 "File 'Coverage1.c++'"
-File 'Coverage1.c++'
-Lines executed:100.00% of 2
-Branches executed:69.23% of 26
-Taken at least once:34.62% of 26
-Calls executed:59.38% of 32
-Creating 'Coverage1.c++.gcov'
+% gcov -b Coverage1.c++ | grep -A 5 "File './Coverage1.h'"
+File './Coverage1.h'
+Lines executed:55.56% of 9
+Branches executed:75.00% of 8
+Taken at least once:37.50% of 8
+No calls
+./Coverage1.h:creating 'Coverage1.h.gcov'
 */

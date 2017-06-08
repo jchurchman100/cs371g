@@ -68,7 +68,7 @@ endif
 
 %.c++x: %.app
 	./$<
-	$(GCOV) -b $(<:.app=.c++) | grep -A 5 "File '$(<:.app=.c++)'"
+	$(GCOV) -b $(<:.app=.c++) | grep -A 5 "File './$(<:.app=.h)'"
 
 clean:
 	rm -f *.app
