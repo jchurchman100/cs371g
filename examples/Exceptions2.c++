@@ -8,7 +8,7 @@
 #include <cassert>   // assert
 #include <cstring>   // strcmp
 #include <iostream>  // cout, endl
-#include <memory>    // shared_ptr
+#include <memory>    // default_delete, shared_ptr, unique_ptr
 #include <stdexcept> // domain_error
 
 using namespace std;
@@ -39,9 +39,34 @@ int main () {
         }
     catch (domain_error& e) {
         assert(strcmp(e.what(), "abc") == 0);}
+/*
+    try {
+        const shared_ptr<int[]> p(new int[10]); // error: no matching constructor for initialization of 'const shared_ptr<int []>'
+
+        f(true);
+        assert(false);
+        }
+    catch (domain_error& e) {
+        assert(strcmp(e.what(), "abc") == 0);}
+*/
+    try {
+        const shared_ptr<int> p(new int[10], [] (int* p) {delete [] p;});
+        f(true);
+        assert(false);
+        }
+    catch (domain_error& e) {
+        assert(strcmp(e.what(), "abc") == 0);}
 
     try {
-        const shared_ptr<int> p(new int[10]);
+        const shared_ptr<int> p(new int[10], default_delete<int[]>());
+        f(true);
+        assert(false);
+        }
+    catch (domain_error& e) {
+        assert(strcmp(e.what(), "abc") == 0);}
+
+    try {
+        const unique_ptr<int[]> p(new int[10]);
         f(true);
         assert(false);
         }

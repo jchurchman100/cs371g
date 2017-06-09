@@ -4,7 +4,10 @@ FILES :=                    \
     Hello                   \
     Exceptions              \
     Exceptions2             \
-    Exceptions3
+    Exceptions3             \
+    Types                   \
+    Operators               \
+    Variables
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

@@ -120,6 +120,9 @@ sync:
     --include "Exceptions.c++"               \
     --include "Exceptions2.c++"              \
     --include "Exceptions3.c++"              \
+    --include "Types.c++"                    \
+    --include "Operators.c++"                \
+    --include "Variables.c++"                \
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \
@@ -138,6 +141,7 @@ sync:
     --include "IsPrime1.c++"                 \
     --include "IsPrime1.h"                   \
     --include "StrCmp.c++"                   \
+    --include "Equal.c++"                    \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete              \
