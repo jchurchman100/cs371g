@@ -109,9 +109,8 @@ TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
 
 .PHONY: TestCollatz.tmp
 TestCollatz.tmp: TestCollatz
-	$(VALGRIND) ./TestCollatz                                        >  TestCollatz.tmp 2>&1
-	-$(GCOV) -b Collatz.c++     | grep -A 5 "File 'Collatz.c++'"     >> TestCollatz.tmp
-	-$(GCOV) -b TestCollatz.c++ | grep -A 5 "File 'TestCollatz.c++'" >> TestCollatz.tmp
+	$(VALGRIND) ./TestCollatz                                >  TestCollatz.tmp 2>&1
+	-$(GCOV) -b Collatz.c++ | grep -A 5 "File 'Collatz.c++'" >> TestCollatz.tmp
 	cat TestCollatz.tmp
 
 check:
