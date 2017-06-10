@@ -12,7 +12,7 @@
 using namespace std;
 
 struct My_Exception : exception {
-    const char* what () const throw () {
+    const char* what () const noexcept {
         return "My_Exception";}};
 
 int main () {
