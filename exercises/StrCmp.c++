@@ -26,35 +26,17 @@ INSTANTIATE_TEST_CASE_P (
            strcmp,
         my_strcmp));
 
-TEST_P (Str_Cmp_Fixture, test_1) {
+TEST_P(Str_Cmp_Fixture, test_1) {
 	ASSERT_EQ(GetParam()("abc", "abc"), 0);}
 
-TEST_P (Str_Cmp_Fixture, test_2) {
-	ASSERT_EQ(GetParam()("abb", "abc"), 'b' - 'c');}
+TEST_P(Str_Cmp_Fixture, test_2) {
+	ASSERT_EQ(GetParam()("abc", "abb"), 'c' - 'b');}
 
-TEST_P (Str_Cmp_Fixture, test_3) {
-	ASSERT_EQ(GetParam()("aba", "abc"), 'a' - 'c');}
-
-TEST_P (Str_Cmp_Fixture, test_4) {
-	ASSERT_EQ(GetParam()("abd", "abc"), 'd' - 'c');}
-
-TEST_P (Str_Cmp_Fixture, test_5) {
-	ASSERT_EQ(GetParam()("abe", "abc"), 'e' - 'c');}
-
-TEST_P (Str_Cmp_Fixture, test_6) {
-	ASSERT_EQ(GetParam()("ab", "abc"), 0 - 'c');}
-
-TEST_P (Str_Cmp_Fixture, test_7) {
+TEST_P(Str_Cmp_Fixture, test_7) {
 	ASSERT_EQ(GetParam()("abc", "ab"), 'c' - 0);}
 
-TEST_P (Str_Cmp_Fixture, test_8) {
-	ASSERT_EQ(GetParam()("", ""), 0);}
-
-TEST_P (Str_Cmp_Fixture, test_9) {
-	ASSERT_EQ(GetParam()("a", ""), 'a' - 0);}
-
-TEST_P (Str_Cmp_Fixture, test_10) {
-	ASSERT_EQ(GetParam()("", "a"), 0 - 'a');}
+TEST_P(Str_Cmp_Fixture, test_8) {
+	ASSERT_EQ(GetParam()("", ""), 0 - 0);}
 
 /*
 % StrCmp
