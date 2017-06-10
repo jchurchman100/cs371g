@@ -57,7 +57,7 @@ gcc                 5.3                 3c08a103780b        3 weeks ago         
 
 
 % pwd
-/Users/downing/cs371p/github
+/Users/downing/cs371g/github
 
 
 
