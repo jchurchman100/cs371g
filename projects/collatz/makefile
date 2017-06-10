@@ -72,7 +72,6 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-.PHONY: collatz-tests
 collatz-tests:
 	git clone https://github.com/cs371gt-summer-2017/collatz-tests.git
 
@@ -157,6 +156,7 @@ scrub:
 	make clean
 	rm -f  Collatz.log
 	rm -f  Doxyfile
+	rm -rf collatz-tests
 	rm -rf html
 
 status:
