@@ -64,30 +64,16 @@ int my_strcmp (const char* a, const char* b) {
         ++b;}
     return *a - *b;}
 
+// ---------
+// Questions
+// ---------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+What is the catch clause?
+What is rethrowing?
+Should you catch by value, by address, or by reference? Why?
+What's an implicit type conversion?
+What is shared_ptr? Unique_ptr?
+What is union?
+What is enum?
+*/
