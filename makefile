@@ -121,6 +121,7 @@ sync:
     --include "Exceptions2.c++"              \
     --include "Exceptions3.c++"              \
     --include "Types.c++"                    \
+    --include "BoostSerialization.c++"       \
     --include "Operators.c++"                \
     --include "Variables.c++"                \
     --exclude "*"                            \

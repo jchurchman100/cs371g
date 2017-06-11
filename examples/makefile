@@ -6,6 +6,7 @@ FILES :=                    \
     Exceptions2             \
     Exceptions3             \
     Types                   \
+    BoostSerialization      \
     Operators               \
     Variables
 
@@ -73,6 +74,7 @@ endif
 
 clean:
 	rm -f *.app
+	rm -f *.bin
 	rm -f *.plist
 
 test: $(FILES:=.c++x)
