@@ -140,7 +140,10 @@ sync:
     --include "Coverage3.h"                  \
     --include "IsPrime1.c++"                 \
     --include "IsPrime1.h"                   \
+    --include "IsPrime2.c++"                 \
+    --include "IsPrime2.h"                   \
     --include "StrCmp.c++"                   \
+    --include "StrCmp.h"                     \
     --include "Equal.c++"                    \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
