@@ -27,16 +27,16 @@ INSTANTIATE_TEST_CASE_P (
         my_strcmp));
 
 TEST_P(Str_Cmp_Fixture, test_1) {
-	ASSERT_EQ(GetParam()("abc", "abc"), 0);}
+	ASSERT_EQ(0, GetParam()("abc", "abc"));}
 
 TEST_P(Str_Cmp_Fixture, test_2) {
-	ASSERT_EQ(GetParam()("abc", "abb"), 'c' - 'b');}
+	ASSERT_EQ('c' - 'b', GetParam()("abc", "abb"));}
 
 TEST_P(Str_Cmp_Fixture, test_7) {
-	ASSERT_EQ(GetParam()("abc", "ab"), 'c' - 0);}
+	ASSERT_EQ('c' - 0, GetParam()("abc", "ab"));}
 
 TEST_P(Str_Cmp_Fixture, test_8) {
-	ASSERT_EQ(GetParam()("", ""), 0 - 0);}
+	ASSERT_EQ(0 - 0, GetParam()("", ""));}
 
 /*
 % StrCmp
