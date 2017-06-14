@@ -124,6 +124,8 @@ sync:
     --include "BoostSerialization.c++"       \
     --include "Operators.c++"                \
     --include "Variables.c++"                \
+    --include "Arguments.c++"                \
+    --include "Returns.c++"                  \
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \
@@ -145,7 +147,10 @@ sync:
     --include "IsPrime2.h"                   \
     --include "StrCmp.c++"                   \
     --include "StrCmp.h"                     \
+    --include "Incr.c++"                     \
     --include "Equal.c++"                    \
+    --include "Copy.c++"                     \
+    --include "Fill.c++"                     \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete              \
