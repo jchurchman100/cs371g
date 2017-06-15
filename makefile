@@ -147,8 +147,9 @@ sync:
     --include "IsPrime2.h"                   \
     --include "StrCmp.c++"                   \
     --include "StrCmp.h"                     \
-    --include "Incr.c++"                     \
     --include "Equal.c++"                    \
+    --include "Equal.h"                      \
+    --include "Incr.c++"                     \
     --include "Copy.c++"                     \
     --include "Fill.c++"                     \
     --exclude "*"                            \
