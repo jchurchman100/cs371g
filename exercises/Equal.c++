@@ -25,18 +25,18 @@ INSTANTIATE_TEST_CASE_P(
     EqualListInstantiation,
     EqualListFixture,
     Values(
-        my_equal<list<int>::const_iterator, vector<int>::const_iterator>,
+           equal<list<int>::const_iterator, vector<int>::const_iterator>,
         my_equal<list<int>::const_iterator, vector<int>::const_iterator>));
 
 TEST_P(EqualListFixture, test_1) {
     const list<int>   x = {2, 3, 4};
     const vector<int> y = {0, 2, 3, 4, 0};
-	ASSERT_FALSE(GetParam()(begin(x), end(x), begin(y)));}
+    ASSERT_FALSE(GetParam()(begin(x), end(x), begin(y)));}
 
 TEST_P(EqualListFixture, test_2) {
     const list<int>   x = {2, 3, 4};
     const vector<int> y = {0, 2, 3, 4, 0};
-	ASSERT_TRUE(GetParam()(begin(x), end(x), begin(y) + 1));}
+    ASSERT_TRUE(GetParam()(begin(x), end(x), begin(y) + 1));}
 
 /*
 % Equal
