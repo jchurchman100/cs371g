@@ -127,6 +127,7 @@ sync:
     --include "Arguments.c++"               \
     --include "Returns.c++"                 \
     --include "Iterators.c++"               \
+    --include "Iteration.c++"               \
     --include "FunctionOverloading.c++"     \
     --include "FunctionGenerics.c++"        \
     --include "FunctionSpecializations.c++" \
