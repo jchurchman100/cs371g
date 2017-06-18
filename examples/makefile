@@ -8,7 +8,14 @@ FILES :=                    \
     Types                   \
     BoostSerialization      \
     Operators               \
-    Variables
+    Variables               \
+    Arguments               \
+    Returns                 \
+    Iterators               \
+    Iteration               \
+    FunctionOverloading     \
+    FunctionGenerics        \
+    FunctionSpecializations
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

@@ -113,57 +113,60 @@ status:
 	git status
 
 sync:
-	@rsync -r -t -u -v --delete              \
-    --include "Docker.txt"                   \
-    --include "Hello.c++"                    \
-    --include "Assertions.c++"               \
-    --include "Exceptions.c++"               \
-    --include "Exceptions2.c++"              \
-    --include "Exceptions3.c++"              \
-    --include "Types.c++"                    \
-    --include "BoostSerialization.c++"       \
-    --include "Operators.c++"                \
-    --include "Variables.c++"                \
-    --include "Arguments.c++"                \
-    --include "Returns.c++"                  \
-    --include "Iterators.c++"                \
-    --exclude "*"                            \
+	@rsync -r -t -u -v --delete             \
+    --include "Docker.txt"                  \
+    --include "Hello.c++"                   \
+    --include "Assertions.c++"              \
+    --include "Exceptions.c++"              \
+    --include "Exceptions2.c++"             \
+    --include "Exceptions3.c++"             \
+    --include "Types.c++"                   \
+    --include "BoostSerialization.c++"      \
+    --include "Operators.c++"               \
+    --include "Variables.c++"               \
+    --include "Arguments.c++"               \
+    --include "Returns.c++"                 \
+    --include "Iterators.c++"               \
+    --include "FunctionOverloading.c++"     \
+    --include "FunctionGenerics.c++"        \
+    --include "FunctionSpecializations.c++" \
+    --exclude "*"                           \
     ../../examples/c++/ examples
-	@rsync -r -t -u -v --delete              \
-    --include "UnitTests1.c++"               \
-    --include "UnitTests1.h"                 \
-    --include "UnitTests2.c++"               \
-    --include "UnitTests2.h"                 \
-    --include "UnitTests3.c++"               \
-    --include "UnitTests3.h"                 \
-    --include "Coverage1.c++"                \
-    --include "Coverage1.h"                  \
-    --include "Coverage2.c++"                \
-    --include "Coverage2.h"                  \
-    --include "Coverage3.c++"                \
-    --include "Coverage3.h"                  \
-    --include "IsPrime1.c++"                 \
-    --include "IsPrime1.h"                   \
-    --include "IsPrime2.c++"                 \
-    --include "IsPrime2.h"                   \
-    --include "StrCmp.c++"                   \
-    --include "StrCmp.h"                     \
-    --include "Equal.c++"                    \
-    --include "Equal.h"                      \
-    --include "Incr.c++"                     \
-    --include "Copy.c++"                     \
-    --include "Fill.c++"                     \
-    --exclude "*"                            \
+	@rsync -r -t -u -v --delete             \
+    --include "UnitTests1.c++"              \
+    --include "UnitTests1.h"                \
+    --include "UnitTests2.c++"              \
+    --include "UnitTests2.h"                \
+    --include "UnitTests3.c++"              \
+    --include "UnitTests3.h"                \
+    --include "Coverage1.c++"               \
+    --include "Coverage1.h"                 \
+    --include "Coverage2.c++"               \
+    --include "Coverage2.h"                 \
+    --include "Coverage3.c++"               \
+    --include "Coverage3.h"                 \
+    --include "IsPrime1.c++"                \
+    --include "IsPrime1.h"                  \
+    --include "IsPrime2.c++"                \
+    --include "IsPrime2.h"                  \
+    --include "StrCmp.c++"                  \
+    --include "StrCmp.h"                    \
+    --include "Equal.c++"                   \
+    --include "Equal.h"                     \
+    --include "Incr.c++"                    \
+    --include "Copy.c++"                    \
+    --include "Fill.c++"                    \
+    --exclude "*"                           \
     ../../exercises/c++/ exercises
-	@rsync -r -t -u -v --delete              \
-    --include "Collatz.c++"                  \
-    --include "Collatz.h"                    \
-    --include "RunCollatz.c++"               \
-    --include "RunCollatz.in"                \
-    --include "RunCollatz.out"               \
-    --include "TestCollatz.c++"              \
-    --include "TestCollatz.out"              \
-    --exclude "*"                            \
+	@rsync -r -t -u -v --delete             \
+    --include "Collatz.c++"                 \
+    --include "Collatz.h"                   \
+    --include "RunCollatz.c++"              \
+    --include "RunCollatz.in"               \
+    --include "RunCollatz.out"              \
+    --include "TestCollatz.c++"             \
+    --include "TestCollatz.out"             \
+    --exclude "*"                           \
     ../../projects/c++/collatz/ projects/collatz
 
 test:
