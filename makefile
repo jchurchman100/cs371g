@@ -155,8 +155,11 @@ sync:
     --include "Equal.c++"                   \
     --include "Equal.h"                     \
     --include "Incr.c++"                    \
+    --include "Incr.h"                      \
     --include "Copy.c++"                    \
+    --include "Copy.h"                      \
     --include "Fill.c++"                    \
+    --include "Fill.h"                      \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
