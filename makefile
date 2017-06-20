@@ -160,6 +160,8 @@ sync:
     --include "Copy.h"                      \
     --include "Fill.c++"                    \
     --include "Fill.h"                      \
+    --include "RangeIterator.c++"           \
+    --include "Range.c++"                   \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
