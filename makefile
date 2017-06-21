@@ -160,6 +160,8 @@ sync:
     --include "Copy.h"                      \
     --include "Fill.c++"                    \
     --include "Fill.h"                      \
+    --include "Count.c++"                   \
+    --include "Reverse.c++"                 \
     --include "RangeIterator.c++"           \
     --include "Range.c++"                   \
     --exclude "*"                           \
