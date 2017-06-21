@@ -39,7 +39,7 @@ int main () {
     forward_list<int> x(3);
     const int v = 2;
     fill(begin(x), end(x), v);
-    assert(all_of(begin(x), end(x), [v] (int w) -> bool {return w == v;}));
+    assert(equal(begin(x), end(x), begin({2, 2, 2})));
     }
 /*
     {
