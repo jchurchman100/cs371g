@@ -161,7 +161,9 @@ sync:
     --include "Fill.c++"                    \
     --include "Fill.h"                      \
     --include "Count.c++"                   \
+    --include "Count.h"                     \
     --include "Reverse.c++"                 \
+    --include "Reverse.h"                   \
     --include "RangeIterator.c++"           \
     --include "Range.c++"                   \
     --exclude "*"                           \
@@ -187,6 +189,9 @@ test:
 	cd projects/collatz; make test
 
 versions:
+	which cmake
+	cmake --version
+	@echo
 	which make
 	make --version
 	@echo

@@ -30,20 +30,20 @@ INSTANTIATE_TEST_CASE_P(
 
 TEST_P(Count_Array_Fixture, test_1) {
     const int a[] = {2, 3, 4, 3};
-	ASSERT_EQ(0, GetParam()(a, a + 4, 1));}
+    ASSERT_EQ(0, GetParam()(a, a + 4, 1));}
 
 TEST_P(Count_Array_Fixture, test_2) {
     const int a[] = {2, 3, 4, 3};
-	ASSERT_EQ(1, GetParam()(a, a + 4, 2));}
+    ASSERT_EQ(1, GetParam()(a, a + 4, 2));}
 
 TEST_P(Count_Array_Fixture, test_3) {
     const int a[] = {2, 3, 4, 3};
-	ASSERT_EQ(2, GetParam()(a, a + 4, 3));}
+    ASSERT_EQ(2, GetParam()(a, a + 4, 3));}
 
 TEST_P(Count_Array_Fixture, test_4) {
     const int a[] = {2, 3, 4, 3};
-	ASSERT_EQ(1, GetParam()(a, a + 4, 4));}
+    ASSERT_EQ(1, GetParam()(a, a + 4, 4));}
 
 TEST_P(Count_Array_Fixture, test_5) {
     const int a[] = {2, 3, 4, 3};
-	ASSERT_EQ(0, GetParam()(a, a + 4, 5));}
+    ASSERT_EQ(0, GetParam()(a, a + 4, 5));}
