@@ -10,7 +10,9 @@ FILES :=          \
     StrCmp        \
     Equal         \
     Copy          \
-    Fill
+    Fill          \
+    Count         \
+    Reverse
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

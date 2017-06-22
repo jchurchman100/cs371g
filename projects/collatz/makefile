@@ -171,6 +171,9 @@ test: html Collatz.log RunCollatz.tmp TestCollatz.tmp collatz-tests
 	make check
 
 versions:
+	which cmake
+	cmake --version
+	@echo
 	which make
 	make --version
 	@echo

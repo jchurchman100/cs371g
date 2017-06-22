@@ -166,6 +166,7 @@ sync:
     --include "Reverse.h"                   \
     --include "RangeIterator.c++"           \
     --include "Range.c++"                   \
+    --include "RMSE.c++"                    \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
