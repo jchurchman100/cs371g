@@ -165,7 +165,9 @@ sync:
     --include "Reverse.c++"                 \
     --include "Reverse.h"                   \
     --include "RangeIterator.c++"           \
+    --include "RangeIterator.h"             \
     --include "Range.c++"                   \
+    --include "Range.h"                     \
     --include "RMSE.c++"                    \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
