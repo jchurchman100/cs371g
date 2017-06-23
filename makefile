@@ -169,6 +169,7 @@ sync:
     --include "Range.c++"                   \
     --include "Range.h"                     \
     --include "RMSE.c++"                    \
+    --include "RMSE.h"                      \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
