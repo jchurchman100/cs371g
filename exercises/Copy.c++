@@ -26,7 +26,7 @@ INSTANTIATE_TEST_CASE_P(
     CopyListFixture,
     Values(
            copy<list<int>::const_iterator, vector<int>::iterator>,
-        my_copy<list<int>::const_iterator, vector<int>::iterator>),);
+        my_copy<list<int>::const_iterator, vector<int>::iterator>));
 
 TEST_P(CopyListFixture, test_1) {
     const list<int>   x = {2, 3, 4};

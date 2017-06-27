@@ -12,7 +12,10 @@ FILES :=          \
     Copy          \
     Fill          \
     Count         \
-    Reverse
+    Reverse       \
+    RangeIterator \
+    Range         \
+    RMSE
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

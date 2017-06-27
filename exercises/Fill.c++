@@ -25,7 +25,7 @@ INSTANTIATE_TEST_CASE_P(
     FillListFixture,
     Values(
            fill<vector<int>::iterator, int>,
-        my_fill<vector<int>::iterator, int>),);
+        my_fill<vector<int>::iterator, int>));
 
 TEST_P(FillListFixture, test_1) {
     const int         v = 2;

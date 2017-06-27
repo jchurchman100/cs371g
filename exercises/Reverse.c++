@@ -26,7 +26,7 @@ INSTANTIATE_TEST_CASE_P(
     Reverse_Array_Fixture,
     Values(
            reverse<int*>,
-        my_reverse<int*>),);
+        my_reverse<int*>));
 
 TEST_P(Reverse_Array_Fixture, test_1) {
     int a[] = {2, 3, 4};
