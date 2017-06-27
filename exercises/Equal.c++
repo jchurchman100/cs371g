@@ -26,7 +26,7 @@ INSTANTIATE_TEST_CASE_P(
     EqualListFixture,
     Values(
         my_equal<list<int>::const_iterator, vector<int>::const_iterator>,
-        my_equal<list<int>::const_iterator, vector<int>::const_iterator>));
+        my_equal<list<int>::const_iterator, vector<int>::const_iterator>),);
 
 TEST_P(EqualListFixture, test_1) {
     const list<int>   x = {2, 3, 4};

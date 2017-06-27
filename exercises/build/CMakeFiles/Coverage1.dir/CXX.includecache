@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/downing/cs371g/github/exercises/Coverage1.c++
+cassert
+-
+iostream
+-
+gtest/gtest.h
+/Users/downing/cs371g/github/exercises/gtest/gtest.h
+Coverage1.h
+/Users/downing/cs371g/github/exercises/Coverage1.h
+
+/Users/downing/cs371g/github/exercises/Coverage1.h
+

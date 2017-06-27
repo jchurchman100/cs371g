@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/IsPrime1.dir/IsPrime1.c++.o  -o IsPrime1 -lboost_serialization -lgtest -lgtest_main 

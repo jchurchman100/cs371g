@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/downing/cs371g/github/exercises/Reverse.c++
+algorithm
+-
+functional
+-
+gtest/gtest.h
+/Users/downing/cs371g/github/exercises/gtest/gtest.h
+Reverse.h
+/Users/downing/cs371g/github/exercises/Reverse.h
+
+/Users/downing/cs371g/github/exercises/Reverse.h
+iterator
+-
+

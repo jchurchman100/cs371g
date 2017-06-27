@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/downing/cs371g/github/exercises/IsPrime1.c++
+gtest/gtest.h
+/Users/downing/cs371g/github/exercises/gtest/gtest.h
+IsPrime1.h
+/Users/downing/cs371g/github/exercises/IsPrime1.h
+
+/Users/downing/cs371g/github/exercises/IsPrime1.h
+cmath
+-
+

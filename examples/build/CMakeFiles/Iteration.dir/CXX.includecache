@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/downing/cs371g/github/examples/Iteration.c++
+algorithm
+-
+cassert
+-
+iostream
+-
+list
+-
+map
+-
+set
+-
+utility
+-
+

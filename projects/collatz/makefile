@@ -75,19 +75,18 @@ endif
 collatz-tests:
 	git clone https://github.com/cs371gt-summer-2017/collatz-tests.git
 
-html: Doxyfile
-	doxygen Doxyfile
+html: Doxyfile Collatz.h
+	$(DOXYGEN) Doxyfile
 
 Collatz.log:
 	git log > Collatz.log
 
 Doxyfile:
-	doxygen -g
-
-# Make the following edits to Doxyfile.
-# EXTRACT_ALL            = YES
-# EXTRACT_PRIVATE        = YES
-# EXTRACT_STATIC         = YES
+	$(DOXYGEN) -g
+	# you must manually edit Doxyfile and
+	# set EXTRACT_ALL     to YES
+	# set EXTRACT_PRIVATE to YES
+	# set EXTRACT_STATEIC to YES
 
 RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
 	$(CXX) $(CXXFLAGS) Collatz.c++ RunCollatz.c++ -o RunCollatz

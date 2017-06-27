@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/downing/cs371g/github/exercises/Copy.c++
+algorithm
+-
+functional
+-
+list
+-
+vector
+-
+gtest/gtest.h
+/Users/downing/cs371g/github/exercises/gtest/gtest.h
+Copy.h
+/Users/downing/cs371g/github/exercises/Copy.h
+
+/Users/downing/cs371g/github/exercises/Copy.h
+

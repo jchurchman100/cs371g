@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/downing/cs371g/github/examples/Iterators.c++
+algorithm
+-
+cassert
+-
+forward_list
+-
+iostream
+-
+iterator
+-
+list
+-
+sstream
+-
+vector
+-
+

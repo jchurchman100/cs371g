@@ -182,6 +182,15 @@ sync:
     --include "TestCollatz.out"             \
     --exclude "*"                           \
     ../../projects/c++/collatz/ projects/collatz
+	@rsync -r -t -u -v --delete             \
+    --include "Integer.c++"                 \
+    --include "Integer.h"                   \
+    --include "RunInteger.c++"              \
+    --include "RunInteger.out"              \
+    --include "TestInteger.c++"             \
+    --include "TestInteger.out"             \
+    --exclude "*"                           \
+    ../../projects/c++/integer/ projects/integer
 
 test:
 	make clean

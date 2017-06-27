@@ -26,7 +26,7 @@ INSTANTIATE_TEST_CASE_P(
     Values(
            count  <const int*, const int&>,
         my_count_1<const int*, const int&>,
-        my_count_2<const int*, const int&>));
+        my_count_2<const int*, const int&>),);
 
 TEST_P(Count_Array_Fixture, test_1) {
     const int a[] = {2, 3, 4, 3};

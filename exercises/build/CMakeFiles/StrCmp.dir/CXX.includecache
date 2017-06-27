@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/downing/cs371g/github/exercises/StrCmp.c++
+cstring
+-
+functional
+-
+iostream
+-
+gtest/gtest.h
+/Users/downing/cs371g/github/exercises/gtest/gtest.h
+StrCmp.h
+/Users/downing/cs371g/github/exercises/StrCmp.h
+
+/Users/downing/cs371g/github/exercises/StrCmp.h
+
