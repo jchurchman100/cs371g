@@ -60,6 +60,8 @@ clean:
 	cd exercises; make clean
 	@echo
 	cd projects/collatz; make clean
+	@echo
+	cd projects/integer; make clean
 
 config:
 	git config -l
@@ -101,6 +103,7 @@ push:
 	git add makefile
 	git add notes
 	git add projects/collatz
+	git add projects/integer
 	git commit -m "another commit"
 	git push
 	git status
@@ -200,6 +203,8 @@ test:
 	cd exercises; make test
 	@echo
 	cd projects/collatz; make test
+	@echo
+	cd projects/integer; make test
 
 versions:
 	which cmake
