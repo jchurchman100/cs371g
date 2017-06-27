@@ -21,8 +21,8 @@ int main () {
     using namespace std;
     cout << "RunInteger.c++" << endl << endl;
 
-    // less than 500 ms
-    cout << "*** 20th Mersenne prime: 1,332 digits ***" << endl << endl;
+    // less than 0.5 sec
+    cout << "*** 20th Mersenne prime (1,332 digits) ***" << endl << endl;
 
     {
     const Integer<int> n = Integer<int>(2).pow(4423) - 1;
@@ -39,7 +39,7 @@ int main () {
     // --------------------------
 
     // less than 4 min
-    cout << "*** 30th Mersenne prime: 39,751 digits ***" << endl << endl;
+    cout << "*** 30th Mersenne prime (39,751 digits) ***" << endl << endl;
 
     {
     const Integer<int> n = Integer<int>(2).pow(132049) - 1;
