@@ -174,6 +174,8 @@ sync:
     --include "Range.h"                     \
     --include "RMSE.c++"                    \
     --include "RMSE.h"                      \
+    --include "Transform.c++"               \
+    --include "Accumulate.c++"              \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
