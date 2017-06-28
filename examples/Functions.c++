@@ -83,7 +83,8 @@ int main () {
 
     {
     list<int> y(3);
-    transform(begin(x), end(x), begin(y), square3<int>(2));
+    int w = 2;
+    transform(begin(x), end(x), begin(y), square3<int>(w));
     assert(equal(begin(y), end(y), begin({4, 9, 16})));
     }
 
