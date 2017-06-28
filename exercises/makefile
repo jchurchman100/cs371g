@@ -20,10 +20,10 @@ FILES :=          \
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
     INCLUDE      := /usr/local/include
-    CXXFLAGS     := -pedantic -std=c++14 -I$(INCLUDE) -Wall -Weffc++
+    CXXFLAGS     := -pedantic -std=c++14 -Wall -Weffc++
     LIBB         := /usr/local/lib
     LIBG         := /usr/local/lib
-    LDFLAGS      := -lboost_serialization -lgtest_main
+    LDFLAGS      := -lboost_serialization -lgtest -lgtest_main
     CLANG-CHECK  := clang-check
     GCOV         := gcov
     GCOVFLAGS    := -fprofile-arcs -ftest-coverage
@@ -71,20 +71,23 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
+.PRECIOUS: %.app
+
 %.app: %.c++ %.h
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $< -o $@ $(LDFLAGS)
+	$(CXX) $(GCOVFLAGS) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
 
-%.c++x: %.app
+%x: %.app
 	./$<
 	-$(GCOV) -b $(<:.app=.c++) | grep -A 5 "File '.*$(<:.app=.h)'"
 
 clean:
 	rm -f *.app
+	rm -f *.bin
 	rm -f *.gcda
 	rm -f *.gcno
 	rm -f *.gcov
 	rm -f *.plist
 
-test: $(FILES:=.c++x)
+test: $(FILES:=x)

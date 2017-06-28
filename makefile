@@ -134,6 +134,7 @@ sync:
     --include "FunctionOverloading.c++"     \
     --include "FunctionGenerics.c++"        \
     --include "FunctionSpecializations.c++" \
+    --include "Functions"                   \
     --exclude "*"                           \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete             \

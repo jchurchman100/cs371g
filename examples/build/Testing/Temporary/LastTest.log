@@ -1,18 +1,18 @@
-Start testing: Jun 26 18:55 CDT
+Start testing: Jun 27 18:37 CDT
 ----------------------------------------------------------
 1/15 Testing: Hello
 1/15 Test: Hello
 Command: "/Users/downing/cs371g/github/examples/build/Hello"
 Directory: /Users/downing/cs371g/github/examples/build
-"Hello" start time: Jun 26 18:55 CDT
+"Hello" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Nothing to be done.
 <end of output>
-Test time =   0.04 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Hello" end time: Jun 26 18:55 CDT
+"Hello" end time: Jun 27 18:37 CDT
 "Hello" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -20,7 +20,7 @@ Test Passed.
 2/15 Test: Exceptions
 Command: "/Users/downing/cs371g/github/examples/build/Exceptions"
 Directory: /Users/downing/cs371g/github/examples/build
-"Exceptions" start time: Jun 26 18:55 CDT
+"Exceptions" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Exceptions.c++
@@ -29,7 +29,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Exceptions" end time: Jun 26 18:55 CDT
+"Exceptions" end time: Jun 27 18:37 CDT
 "Exceptions" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -37,7 +37,7 @@ Test Passed.
 3/15 Test: Exceptions2
 Command: "/Users/downing/cs371g/github/examples/build/Exceptions2"
 Directory: /Users/downing/cs371g/github/examples/build
-"Exceptions2" start time: Jun 26 18:55 CDT
+"Exceptions2" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Exceptions2.c++
@@ -46,7 +46,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Exceptions2" end time: Jun 26 18:55 CDT
+"Exceptions2" end time: Jun 27 18:37 CDT
 "Exceptions2" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -54,7 +54,7 @@ Test Passed.
 4/15 Test: Exceptions3
 Command: "/Users/downing/cs371g/github/examples/build/Exceptions3"
 Directory: /Users/downing/cs371g/github/examples/build
-"Exceptions3" start time: Jun 26 18:55 CDT
+"Exceptions3" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Exceptions3.c++
@@ -63,7 +63,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Exceptions3" end time: Jun 26 18:55 CDT
+"Exceptions3" end time: Jun 27 18:37 CDT
 "Exceptions3" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -71,7 +71,7 @@ Test Passed.
 5/15 Test: Types
 Command: "/Users/downing/cs371g/github/examples/build/Types"
 Directory: /Users/downing/cs371g/github/examples/build
-"Types" start time: Jun 26 18:55 CDT
+"Types" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Types.c++
@@ -80,7 +80,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Types" end time: Jun 26 18:55 CDT
+"Types" end time: Jun 27 18:37 CDT
 "Types" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -88,16 +88,16 @@ Test Passed.
 6/15 Test: BoostSerialization
 Command: "/Users/downing/cs371g/github/examples/build/BoostSerialization"
 Directory: /Users/downing/cs371g/github/examples/build
-"BoostSerialization" start time: Jun 26 18:55 CDT
+"BoostSerialization" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 BoostSerialization.c++
 Done.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"BoostSerialization" end time: Jun 26 18:55 CDT
+"BoostSerialization" end time: Jun 27 18:37 CDT
 "BoostSerialization" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -105,7 +105,7 @@ Test Passed.
 7/15 Test: Operators
 Command: "/Users/downing/cs371g/github/examples/build/Operators"
 Directory: /Users/downing/cs371g/github/examples/build
-"Operators" start time: Jun 26 18:55 CDT
+"Operators" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Operators.c++
@@ -114,7 +114,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Operators" end time: Jun 26 18:55 CDT
+"Operators" end time: Jun 27 18:37 CDT
 "Operators" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -122,7 +122,7 @@ Test Passed.
 8/15 Test: Variables
 Command: "/Users/downing/cs371g/github/examples/build/Variables"
 Directory: /Users/downing/cs371g/github/examples/build
-"Variables" start time: Jun 26 18:55 CDT
+"Variables" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Variables.c++
@@ -131,7 +131,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Variables" end time: Jun 26 18:55 CDT
+"Variables" end time: Jun 27 18:37 CDT
 "Variables" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -139,7 +139,7 @@ Test Passed.
 9/15 Test: Arguments
 Command: "/Users/downing/cs371g/github/examples/build/Arguments"
 Directory: /Users/downing/cs371g/github/examples/build
-"Arguments" start time: Jun 26 18:55 CDT
+"Arguments" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Arguments.c++
@@ -148,7 +148,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Arguments" end time: Jun 26 18:55 CDT
+"Arguments" end time: Jun 27 18:37 CDT
 "Arguments" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -156,7 +156,7 @@ Test Passed.
 10/15 Test: Returns
 Command: "/Users/downing/cs371g/github/examples/build/Returns"
 Directory: /Users/downing/cs371g/github/examples/build
-"Returns" start time: Jun 26 18:55 CDT
+"Returns" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Returns.c++
@@ -165,7 +165,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Returns" end time: Jun 26 18:55 CDT
+"Returns" end time: Jun 27 18:37 CDT
 "Returns" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -173,7 +173,7 @@ Test Passed.
 11/15 Test: Iterators
 Command: "/Users/downing/cs371g/github/examples/build/Iterators"
 Directory: /Users/downing/cs371g/github/examples/build
-"Iterators" start time: Jun 26 18:55 CDT
+"Iterators" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Iterators.c++
@@ -182,7 +182,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Iterators" end time: Jun 26 18:55 CDT
+"Iterators" end time: Jun 27 18:37 CDT
 "Iterators" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -190,7 +190,7 @@ Test Passed.
 12/15 Test: Iteration
 Command: "/Users/downing/cs371g/github/examples/build/Iteration"
 Directory: /Users/downing/cs371g/github/examples/build
-"Iteration" start time: Jun 26 18:55 CDT
+"Iteration" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 Iteration.c++
@@ -199,7 +199,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Iteration" end time: Jun 26 18:55 CDT
+"Iteration" end time: Jun 27 18:37 CDT
 "Iteration" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -207,7 +207,7 @@ Test Passed.
 13/15 Test: FunctionOverloading
 Command: "/Users/downing/cs371g/github/examples/build/FunctionOverloading"
 Directory: /Users/downing/cs371g/github/examples/build
-"FunctionOverloading" start time: Jun 26 18:55 CDT
+"FunctionOverloading" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 FunctionOverloading.c++
@@ -216,7 +216,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"FunctionOverloading" end time: Jun 26 18:55 CDT
+"FunctionOverloading" end time: Jun 27 18:37 CDT
 "FunctionOverloading" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -224,7 +224,7 @@ Test Passed.
 14/15 Test: FunctionGenerics
 Command: "/Users/downing/cs371g/github/examples/build/FunctionGenerics"
 Directory: /Users/downing/cs371g/github/examples/build
-"FunctionGenerics" start time: Jun 26 18:55 CDT
+"FunctionGenerics" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 FunctionGenerics.c++
@@ -233,7 +233,7 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"FunctionGenerics" end time: Jun 26 18:55 CDT
+"FunctionGenerics" end time: Jun 27 18:37 CDT
 "FunctionGenerics" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -241,7 +241,7 @@ Test Passed.
 15/15 Test: FunctionSpecializations
 Command: "/Users/downing/cs371g/github/examples/build/FunctionSpecializations"
 Directory: /Users/downing/cs371g/github/examples/build
-"FunctionSpecializations" start time: Jun 26 18:55 CDT
+"FunctionSpecializations" start time: Jun 27 18:37 CDT
 Output:
 ----------------------------------------------------------
 FunctionSpecializations.c++
@@ -250,8 +250,8 @@ Done.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"FunctionSpecializations" end time: Jun 26 18:55 CDT
+"FunctionSpecializations" end time: Jun 27 18:37 CDT
 "FunctionSpecializations" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jun 26 18:55 CDT
+End testing: Jun 27 18:37 CDT
