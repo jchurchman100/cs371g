@@ -60,6 +60,15 @@ int main () {
     transform(begin(x), end(x), begin(y), [w] (int v) -> int {return pow(v, w);});
     assert(equal(begin(y), end(y), begin({4, 9, 16})));
     }
+
+    {
+    list<int> y(3);
+    int  w = 2;
+    auto f = [w] (int v) -> int {return pow(v, w);};
+    ++w;
+    transform(begin(x), end(x), begin(y), f);
+    assert(equal(begin(y), end(y), begin({4, 9, 16})));
+    }
 /*
     {
     list<int> y(3);
@@ -67,6 +76,13 @@ int main () {
     transform(begin(x), end(x), begin(y), [w] (int v) -> int {++w; return pow(v, w);}); // error: cannot assign to a variable captured by copy in a non-mutable lambda
     }
 */
+
+    {
+    list<int> y(3);
+    int w = 2;
+    transform(begin(x), end(x), begin(y), [w] (int v) mutable -> int {++w; return pow(v, w);});
+    }
+
     {
     list<int> y(3);
     int w = 2;

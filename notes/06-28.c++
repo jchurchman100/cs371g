@@ -64,13 +64,15 @@ indexing
 
 /*
 vector
-push_back (amortized O(1))
-push_front: not there
-insert: O(n)
+array
 
-pop_back: O(1)
+push_back:  amortized O(1)
+push_front: not there
+insert:     O(n)
+
+pop_back:  O(1)
 pop_front: not there
-remove: O(n)
+remove:    O(n)
 
 index: O(1)
 */
@@ -83,13 +85,15 @@ cout << *p;     // not ok
 
 /*
 list
-push_back: O(1)
-push_front: O(1)
-insert: O(1)
+doubly-linked
 
-pop_back: O(1)
+push_back:  O(1)
+push_front: O(1)
+insert:     O(1)
+
+pop_back:  O(1)
 pop_front: O(1)
-remove: O(1)
+remove:    O(1)
 
 index: not there
 */
@@ -97,6 +101,16 @@ index: not there
 /*
 deque
 array of arrays
+
+push_back:  amortized O(1)
+push_front: amortized O(1)
+insert:     O(n)
+
+pop_back:  O(1)
+pop_front: O(1)
+remove:    O(n)
+
+index: O(1)
 */
 
 deque<int> x(10, 2); // 1 outer array, size 1; 1 inner array, size 10
