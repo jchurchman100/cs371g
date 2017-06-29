@@ -30,7 +30,8 @@ set (FILES
     Iteration
     FunctionOverloading
     FunctionGenerics
-    FunctionSpecializations)
+    FunctionSpecializations
+    Functions)
 
 enable_testing()
 

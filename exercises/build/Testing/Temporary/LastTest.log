@@ -1,10 +1,10 @@
-Start testing: Jun 27 18:41 CDT
+Start testing: Jun 28 22:50 CDT
 ----------------------------------------------------------
 1/12 Testing: UnitTests3
 1/12 Test: UnitTests3
 Command: "/Users/downing/cs371g/github/exercises/build/UnitTests3"
 Directory: /Users/downing/cs371g/github/exercises/build
-"UnitTests3" start time: Jun 27 18:41 CDT
+"UnitTests3" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -26,7 +26,7 @@ Running main() from gtest_main.cc
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"UnitTests3" end time: Jun 27 18:41 CDT
+"UnitTests3" end time: Jun 28 22:50 CDT
 "UnitTests3" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -34,7 +34,7 @@ Test Passed.
 2/12 Test: Coverage1
 Command: "/Users/downing/cs371g/github/exercises/build/Coverage1"
 Directory: /Users/downing/cs371g/github/exercises/build
-"Coverage1" start time: Jun 27 18:41 CDT
+"Coverage1" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -46,13 +46,13 @@ Running main() from gtest_main.cc
 [----------] 1 test from CoverageFixture (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test case ran. (1 ms total)
+[==========] 1 test from 1 test case ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"Coverage1" end time: Jun 27 18:41 CDT
+"Coverage1" end time: Jun 28 22:50 CDT
 "Coverage1" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -60,7 +60,7 @@ Test Passed.
 3/12 Test: Coverage2
 Command: "/Users/downing/cs371g/github/exercises/build/Coverage2"
 Directory: /Users/downing/cs371g/github/exercises/build
-"Coverage2" start time: Jun 27 18:41 CDT
+"Coverage2" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -75,10 +75,10 @@ Running main() from gtest_main.cc
 [==========] 1 test from 1 test case ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"Coverage2" end time: Jun 27 18:41 CDT
+"Coverage2" end time: Jun 28 22:50 CDT
 "Coverage2" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -86,7 +86,7 @@ Test Passed.
 4/12 Test: Coverage3
 Command: "/Users/downing/cs371g/github/exercises/build/Coverage3"
 Directory: /Users/downing/cs371g/github/exercises/build
-"Coverage3" start time: Jun 27 18:41 CDT
+"Coverage3" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -101,10 +101,10 @@ Running main() from gtest_main.cc
 [==========] 1 test from 1 test case ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"Coverage3" end time: Jun 27 18:41 CDT
+"Coverage3" end time: Jun 28 22:50 CDT
 "Coverage3" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -112,7 +112,7 @@ Test Passed.
 5/12 Test: IsPrime1
 Command: "/Users/downing/cs371g/github/exercises/build/IsPrime1"
 Directory: /Users/downing/cs371g/github/exercises/build
-"IsPrime1" start time: Jun 27 18:41 CDT
+"IsPrime1" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -143,10 +143,10 @@ Running main() from gtest_main.cc
 [==========] 9 tests from 1 test case ran. (0 ms total)
 [  PASSED  ] 9 tests.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"IsPrime1" end time: Jun 27 18:41 CDT
+"IsPrime1" end time: Jun 28 22:50 CDT
 "IsPrime1" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -154,7 +154,7 @@ Test Passed.
 6/12 Test: IsPrime2
 Command: "/Users/downing/cs371g/github/exercises/build/IsPrime2"
 Directory: /Users/downing/cs371g/github/exercises/build
-"IsPrime2" start time: Jun 27 18:41 CDT
+"IsPrime2" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -182,13 +182,13 @@ Running main() from gtest_main.cc
 [----------] 9 tests from IsPrimeFixture (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 9 tests from 1 test case ran. (0 ms total)
+[==========] 9 tests from 1 test case ran. (1 ms total)
 [  PASSED  ] 9 tests.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"IsPrime2" end time: Jun 27 18:41 CDT
+"IsPrime2" end time: Jun 28 22:50 CDT
 "IsPrime2" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -196,7 +196,7 @@ Test Passed.
 7/12 Test: StrCmp
 Command: "/Users/downing/cs371g/github/exercises/build/StrCmp"
 Directory: /Users/downing/cs371g/github/exercises/build
-"StrCmp" start time: Jun 27 18:41 CDT
+"StrCmp" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -225,10 +225,10 @@ Running main() from gtest_main.cc
 [==========] 8 tests from 1 test case ran. (0 ms total)
 [  PASSED  ] 8 tests.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"StrCmp" end time: Jun 27 18:41 CDT
+"StrCmp" end time: Jun 28 22:50 CDT
 "StrCmp" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -236,7 +236,7 @@ Test Passed.
 8/12 Test: Equal
 Command: "/Users/downing/cs371g/github/exercises/build/Equal"
 Directory: /Users/downing/cs371g/github/exercises/build
-"Equal" start time: Jun 27 18:41 CDT
+"Equal" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -257,10 +257,10 @@ Running main() from gtest_main.cc
 [==========] 4 tests from 1 test case ran. (0 ms total)
 [  PASSED  ] 4 tests.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"Equal" end time: Jun 27 18:41 CDT
+"Equal" end time: Jun 28 22:50 CDT
 "Equal" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -268,7 +268,7 @@ Test Passed.
 9/12 Test: Copy
 Command: "/Users/downing/cs371g/github/exercises/build/Copy"
 Directory: /Users/downing/cs371g/github/exercises/build
-"Copy" start time: Jun 27 18:41 CDT
+"Copy" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -289,10 +289,10 @@ Running main() from gtest_main.cc
 [==========] 4 tests from 1 test case ran. (0 ms total)
 [  PASSED  ] 4 tests.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"Copy" end time: Jun 27 18:41 CDT
+"Copy" end time: Jun 28 22:50 CDT
 "Copy" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -300,7 +300,7 @@ Test Passed.
 10/12 Test: Fill
 Command: "/Users/downing/cs371g/github/exercises/build/Fill"
 Directory: /Users/downing/cs371g/github/exercises/build
-"Fill" start time: Jun 27 18:41 CDT
+"Fill" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -321,10 +321,10 @@ Running main() from gtest_main.cc
 [==========] 4 tests from 1 test case ran. (0 ms total)
 [  PASSED  ] 4 tests.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"Fill" end time: Jun 27 18:41 CDT
+"Fill" end time: Jun 28 22:50 CDT
 "Fill" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -332,7 +332,7 @@ Test Passed.
 11/12 Test: Count
 Command: "/Users/downing/cs371g/github/exercises/build/Count"
 Directory: /Users/downing/cs371g/github/exercises/build
-"Count" start time: Jun 27 18:41 CDT
+"Count" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -360,7 +360,7 @@ Running main() from gtest_main.cc
 [ RUN      ] Count_Array_Instantiation/Count_Array_Fixture.test_4/0
 [       OK ] Count_Array_Instantiation/Count_Array_Fixture.test_4/0 (0 ms)
 [ RUN      ] Count_Array_Instantiation/Count_Array_Fixture.test_4/1
-[       OK ] Count_Array_Instantiation/Count_Array_Fixture.test_4/1 (0 ms)
+[       OK ] Count_Array_Instantiation/Count_Array_Fixture.test_4/1 (1 ms)
 [ RUN      ] Count_Array_Instantiation/Count_Array_Fixture.test_4/2
 [       OK ] Count_Array_Instantiation/Count_Array_Fixture.test_4/2 (0 ms)
 [ RUN      ] Count_Array_Instantiation/Count_Array_Fixture.test_5/0
@@ -369,16 +369,16 @@ Running main() from gtest_main.cc
 [       OK ] Count_Array_Instantiation/Count_Array_Fixture.test_5/1 (0 ms)
 [ RUN      ] Count_Array_Instantiation/Count_Array_Fixture.test_5/2
 [       OK ] Count_Array_Instantiation/Count_Array_Fixture.test_5/2 (0 ms)
-[----------] 15 tests from Count_Array_Instantiation/Count_Array_Fixture (0 ms total)
+[----------] 15 tests from Count_Array_Instantiation/Count_Array_Fixture (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 15 tests from 1 test case ran. (0 ms total)
+[==========] 15 tests from 1 test case ran. (1 ms total)
 [  PASSED  ] 15 tests.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"Count" end time: Jun 27 18:41 CDT
+"Count" end time: Jun 28 22:50 CDT
 "Count" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -386,7 +386,7 @@ Test Passed.
 12/12 Test: Reverse
 Command: "/Users/downing/cs371g/github/exercises/build/Reverse"
 Directory: /Users/downing/cs371g/github/exercises/build
-"Reverse" start time: Jun 27 18:41 CDT
+"Reverse" start time: Jun 28 22:50 CDT
 Output:
 ----------------------------------------------------------
 Running main() from gtest_main.cc
@@ -415,11 +415,11 @@ Running main() from gtest_main.cc
 [==========] 8 tests from 1 test case ran. (0 ms total)
 [  PASSED  ] 8 tests.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"Reverse" end time: Jun 27 18:41 CDT
+"Reverse" end time: Jun 28 22:50 CDT
 "Reverse" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jun 27 18:41 CDT
+End testing: Jun 28 22:50 CDT

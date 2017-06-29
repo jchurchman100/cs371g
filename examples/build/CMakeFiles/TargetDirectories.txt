@@ -16,5 +16,6 @@
 /Users/downing/cs371g/github/examples/build/CMakeFiles/BoostSerialization.dir
 /Users/downing/cs371g/github/examples/build/CMakeFiles/Types.dir
 /Users/downing/cs371g/github/examples/build/CMakeFiles/Arguments.dir
+/Users/downing/cs371g/github/examples/build/CMakeFiles/Functions.dir
 /Users/downing/cs371g/github/examples/build/CMakeFiles/Variables.dir
 /Users/downing/cs371g/github/examples/build/CMakeFiles/Hello.dir
