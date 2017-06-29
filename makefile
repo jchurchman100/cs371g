@@ -1,4 +1,4 @@
-.DEFAULT_GOAL :=  test
+.DEFAULT_GOAL :=  all
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
@@ -53,6 +53,17 @@ else                                                                    # UTCS
     DOXYGEN      := doxygen
     CLANG-FORMAT := clang-format-3.8
 endif
+
+all:
+	make clean
+	@echo
+	cd examples; make all
+	@echo
+	cd exercises; make all
+	@echo
+	cd projects/collatz; make all
+	@echo
+	cd projects/integer; make all
 
 clean:
 	cd examples; make clean
@@ -201,9 +212,9 @@ sync:
 test:
 	make clean
 	@echo
-	cd examples; make; make test
+	cd examples; make test
 	@echo
-	cd exercises; make; make test
+	cd exercises; make test
 	@echo
 	cd projects/collatz; make test
 	@echo
