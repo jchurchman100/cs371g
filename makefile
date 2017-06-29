@@ -201,9 +201,9 @@ sync:
 test:
 	make clean
 	@echo
-	cd examples; make test
+	cd examples; make; make test
 	@echo
-	cd exercises; make test
+	cd exercises; make; make test
 	@echo
 	cd projects/collatz; make test
 	@echo
