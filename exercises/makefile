@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := test
+.DEFAULT_GOAL := all
 
 FILES :=          \
     UnitTests3    \
@@ -71,23 +71,23 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-.PRECIOUS: %.app
-
-%.app: %.c++ %.h
+%: %.c++ %.h
 	$(CXX) $(GCOVFLAGS) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
 
-%x: %.app
+%.c++x: %
 	./$<
-	-$(GCOV) -b $(<:.app=.c++) | grep -A 5 "File '.*$(<:.app=.h)'"
+	-$(GCOV) -b $(<:=.c++) | grep -A 5 "File '.*$(<:=.h)'"
+
+all: $(FILES)
 
 clean:
-	rm -f *.app
 	rm -f *.bin
 	rm -f *.gcda
 	rm -f *.gcno
 	rm -f *.gcov
 	rm -f *.plist
+	rm -f $(FILES)
 
-test: $(FILES:=x)
+test: $(FILES:=.c++x)

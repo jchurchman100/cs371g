@@ -1,6 +1,6 @@
-.DEFAULT_GOAL := test
+.DEFAULT_GOAL := all
 
-FILES :=            \
+CHECKS :=            \
     .gitignore      \
     Collatz.c++     \
     Collatz.h       \
@@ -18,13 +18,17 @@ FILES :=            \
 #    collatz-tests/GitHubID-RunCollatz.in  \
 #    collatz-tests/GitHubID-RunCollatz.out \
 
+FILES :=        \
+    RunCollatz  \
+    TestCollatz
+
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
     INCLUDE      := /usr/local/include
-    CXXFLAGS     := -pedantic -std=c++14 -I$(INCLUDE) -Wall -Weffc++
+    CXXFLAGS     := -pedantic -std=c++14 -Wall -Weffc++
     LIBB         := /usr/local/lib
     LIBG         := /usr/local/lib
-    LDFLAGS      := -lboost_serialization -lgtest_main
+    LDFLAGS      := -lboost_serialization -lgtest -lgtest_main
     CLANG-CHECK  := clang-check
     GCOV         := gcov
     GCOVFLAGS    := -fprofile-arcs -ftest-coverage
@@ -95,9 +99,10 @@ RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunCollatz.c++  --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunCollatz.c++  --
 
-.PHONY: RunCollatz.tmp
 RunCollatz.tmp: RunCollatz
 	./RunCollatz < RunCollatz.in > RunCollatz.tmp
+
+RunCollatz.c++x: RunCollatz.tmp
 	-diff RunCollatz.tmp RunCollatz.out
 
 TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
@@ -105,15 +110,18 @@ TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestCollatz.c++ --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestCollatz.c++ --
 
-.PHONY: TestCollatz.tmp
 TestCollatz.tmp: TestCollatz
 	$(VALGRIND) ./TestCollatz                                >  TestCollatz.tmp 2>&1
 	-$(GCOV) -b Collatz.c++ | grep -A 5 "File 'Collatz.c++'" >> TestCollatz.tmp
+
+TestCollatz.c++x: TestCollatz.tmp
 	cat TestCollatz.tmp
+
+all: $(FILES)
 
 check:
 	@not_found=0;                                 \
-    for i in $(FILES);                            \
+    for i in $(CHECKS);                           \
     do                                            \
         if [ -e $$i ];                            \
         then                                      \
@@ -135,15 +143,16 @@ clean:
 	rm -f  *.gcno
 	rm -f  *.gcov
 	rm -f  *.plist
-	rm -f  RunCollatz
-	rm -f  RunCollatz.tmp
-	rm -f  TestCollatz
-	rm -f  TestCollatz.tmp
+	rm -f  *.tmp
+	rm -f  $(FILES)
 	rm -rf *.dSYM
 	rm -rf latex
 
 config:
 	git config -l
+
+docker:
+	docker run -it -v $(PWD):/usr/gcc -w /usr/gcc gpdowning/gcc
 
 format:
 	$(CLANG-FORMAT) -i Collatz.c++
@@ -165,7 +174,7 @@ status:
 	git remote -v
 	git status
 
-test: html Collatz.log RunCollatz.tmp TestCollatz.tmp collatz-tests
+test: html Collatz.log RunCollatz.c++x TestCollatz.c++x collatz-tests
 	ls -al
 	make check
 

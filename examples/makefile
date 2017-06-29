@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := test
+.DEFAULT_GOAL := all
 
 FILES :=                    \
     Hello                   \
@@ -72,19 +72,19 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-.PRECIOUS: %.app
-
-%.app: %.c++
+%: %.c++
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
 
-%x: %.app
+%.c++x: %
 	./$<
 
+all: $(FILES)
+
 clean:
-	rm -f *.app
 	rm -f *.bin
 	rm -f *.plist
+	rm -f $(FILES)
 
-test: $(FILES:=x)
+test: $(FILES:=.c++x)

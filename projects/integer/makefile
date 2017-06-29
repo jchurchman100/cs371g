@@ -1,6 +1,6 @@
-.DEFAULT_GOAL := test
+.DEFAULT_GOAL := all
 
-FILES :=            \
+CHECKS :=           \
     .gitignore      \
     Integer.h       \
     Integer.log     \
@@ -12,16 +12,20 @@ FILES :=            \
     TestInteger.out
 
 # uncomment these:
-#    .travis.yml                      \
-#    integer-tests/EID-RunInteger.out \
+#    .travis.yml                           \
+#    collatz-tests/GitHubID-RunInteger.out \
+
+FILES :=        \
+    RunInteger  \
+    TestInteger
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
     INCLUDE      := /usr/local/include
-    CXXFLAGS     := -pedantic -std=c++14 -I$(INCLUDE) -Wall -Weffc++
+    CXXFLAGS     := -pedantic -std=c++14 -Wall -Weffc++
     LIBB         := /usr/local/lib
     LIBG         := /usr/local/lib
-    LDFLAGS      := -lboost_serialization -lgtest_main
+    LDFLAGS      := -lboost_serialization -lgtest -lgtest_main
     CLANG-CHECK  := clang-check
     GCOV         := gcov
     GCOVFLAGS    := -fprofile-arcs -ftest-coverage
@@ -69,8 +73,8 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-integer-tests:
-	git clone https://github.com/cs371g-summer-2017/integer-tests.git
+collatz-tests:
+	git clone https://github.com/cs371gt-summer-2017/collatz-tests.git
 
 html: Doxyfile Integer.h
 	$(DOXYGEN) Doxyfile
@@ -90,9 +94,10 @@ RunInteger: Integer.h RunInteger.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunInteger.c++  --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunInteger.c++  --
 
-.PHONY: RunInteger.tmp
 RunInteger.tmp: RunInteger
-	./RunInteger < RunInteger.in > RunInteger.tmp
+	./RunInteger > RunInteger.tmp
+
+RunInteger.c++x: RunInteger.tmp
 	-diff RunInteger.tmp RunInteger.out
 
 TestInteger: Integer.h TestInteger.c++
@@ -100,15 +105,18 @@ TestInteger: Integer.h TestInteger.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestInteger.c++ --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestInteger.c++ --
 
-.PHONY: TestInteger.tmp
 TestInteger.tmp: TestInteger
-	$(VALGRIND) ./TestInteger                                    >  TestInteger.tmp 2>&1
-	-$(GCOV) -b TestInteger.c++ | grep -A 5 "File './Integer.h'" >> TestInteger.tmp
+	$(VALGRIND) ./TestInteger                                  >  TestInteger.tmp 2>&1
+	-$(GCOV) -b TestInteger.c++ | grep -A 5 "File 'Integer.h'" >> TestInteger.tmp
+
+TestInteger.c++x: TestInteger.tmp
 	cat TestInteger.tmp
+
+all: $(FILES)
 
 check:
 	@not_found=0;                                 \
-    for i in $(FILES);                            \
+    for i in $(CHECKS);                           \
     do                                            \
         if [ -e $$i ];                            \
         then                                      \
@@ -130,15 +138,16 @@ clean:
 	rm -f  *.gcno
 	rm -f  *.gcov
 	rm -f  *.plist
-	rm -f  RunInteger
-	rm -f  RunInteger.tmp
-	rm -f  TestInteger
-	rm -f  TestInteger.tmp
+	rm -f  *.tmp
+	rm -f  $(FILES)
 	rm -rf *.dSYM
 	rm -rf latex
 
 config:
 	git config -l
+
+docker:
+	docker run -it -v $(PWD):/usr/gcc -w /usr/gcc gpdowning/gcc
 
 format:
 	$(CLANG-FORMAT) -i Integer.h
@@ -159,7 +168,7 @@ status:
 	git remote -v
 	git status
 
-test: html Integer.log RunInteger.tmp TestInteger.tmp integer-tests check
+test: html Integer.log RunInteger.c++x TestInteger.c++x collatz-tests
 	ls -al
 	make check
 
