@@ -4,10 +4,11 @@
 
 // http://en.cppreference.com/w/cpp/container/priority_queue
 
-#include <cassert> // assert
-#include <deque>   // deque
-#include <queue>   // priority_queue
-#include <vector>  // vector
+#include <cassert>    // assert
+#include <deque>      // deque
+#include <functional> // less
+#include <queue>      // priority_queue
+#include <vector>     // vector
 
 #include "gtest/gtest.h"
 
@@ -25,10 +26,10 @@ struct PriorityQueue_Fixture : Test {
 using
     priority_queue_types =
     Types<
-           priority_queue<int>,
-           priority_queue<int, deque<int>>,
+              priority_queue<int>,
+              priority_queue<int, deque<int>, less<int>>,
            my_priority_queue<int>,
-           my_priority_queue<int, deque<int>>>;
+           my_priority_queue<int, deque<int>, less<int>>>;
 
 TYPED_TEST_CASE(PriorityQueue_Fixture, priority_queue_types);
 
