@@ -15,7 +15,10 @@ FILES :=          \
     Reverse       \
     RangeIterator \
     Range         \
-    RMSE
+    RMSE          \
+    Transform     \
+    Accumulate    \
+    Stack
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

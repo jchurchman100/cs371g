@@ -186,8 +186,11 @@ sync:
     --include "RMSE.c++"                    \
     --include "RMSE.h"                      \
     --include "Transform.c++"               \
+    --include "Transform.h"                 \
     --include "Accumulate.c++"              \
+    --include "Accumulate.h"                \
     --include "Stack.c++"                   \
+    --include "Stack.h"                     \
     --include "Queue.c++"                   \
     --include "PriorityQueue.c++"           \
     --exclude "*"                           \

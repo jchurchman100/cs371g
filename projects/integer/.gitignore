@@ -1,0 +1,13 @@
+.DS_Store
+*.dSYM
+*.gcda
+*.gcno
+*.gcov
+*.plist
+Doxyfile
+Icon?
+integer-tests
+RunInteger
+RunInteger.tmp
+TestInteger
+TestInteger.tmp

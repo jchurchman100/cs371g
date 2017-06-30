@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-CHECKS :=            \
+CHECKS :=           \
     .gitignore      \
     Collatz.c++     \
     Collatz.h       \
