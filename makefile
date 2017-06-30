@@ -1,4 +1,4 @@
-.DEFAULT_GOAL :=  all
+.DEFAULT_GOAL := all
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
@@ -187,6 +187,9 @@ sync:
     --include "RMSE.h"                      \
     --include "Transform.c++"               \
     --include "Accumulate.c++"              \
+    --include "Stack.c++"                   \
+    --include "Queue.c++"                   \
+    --include "PriorityQueue.c++"           \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
@@ -210,8 +213,6 @@ sync:
     ../../projects/c++/integer/ projects/integer
 
 test:
-	make clean
-	@echo
 	cd examples; make test
 	@echo
 	cd exercises; make test

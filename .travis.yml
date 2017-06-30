@@ -37,4 +37,10 @@ before_script:
 script:
     - date
     - ls -al
+    - ls -al examples
+    - ls -al exercises
+    - make all
+    - ls -al
+    - ls -al examples
+    - ls -al exercises
     - make test
