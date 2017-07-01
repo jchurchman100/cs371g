@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-FILES :=           \
+FILES :=            \
     .gitignore      \
     Collatz.c++     \
     Collatz.h       \
@@ -105,8 +105,8 @@ TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestCollatz.c++ --
 
 TestCollatz.tmp: TestCollatz
-	$(VALGRIND) ./TestCollatz                                >  TestCollatz.tmp 2>&1
-	-$(GCOV) -b Collatz.c++ | grep -A 5 "File 'Collatz.c++'" >> TestCollatz.tmp
+	$(VALGRIND) ./TestCollatz                                  >  TestCollatz.tmp 2>&1
+	-$(GCOV) -b Collatz.c++ | grep -A 5 "File '.*Collatz.c++'" >> TestCollatz.tmp
 	cat TestCollatz.tmp
 
 all: RunCollatz TestCollatz
@@ -169,7 +169,15 @@ status:
 	git remote -v
 	git status
 
-test: TestCollatz.tmp collatz-tests html Collatz.log
+test: TestCollatz.tmp
+
+travis: collatz-tests html Collatz.log
+	ls -al
+	make
+	ls -al
+	make run
+	ls -al
+	make test
 	ls -al
 	make check
 

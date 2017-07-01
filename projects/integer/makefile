@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-CHECKS :=           \
+FILES :=            \
     .gitignore      \
     Integer.h       \
     Integer.log     \
@@ -14,10 +14,6 @@ CHECKS :=           \
 # uncomment these:
 #    .travis.yml                           \
 #    integer-tests/GitHubID-RunInteger.out \
-
-FILES :=        \
-    RunInteger  \
-    TestInteger
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
@@ -96,8 +92,6 @@ RunInteger: Integer.h RunInteger.c++
 
 RunInteger.tmp: RunInteger
 	./RunInteger > RunInteger.tmp
-
-RunInteger.c++x: RunInteger.tmp
 	-diff RunInteger.tmp RunInteger.out
 
 TestInteger: Integer.h TestInteger.c++
@@ -106,17 +100,15 @@ TestInteger: Integer.h TestInteger.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestInteger.c++ --
 
 TestInteger.tmp: TestInteger
-	$(VALGRIND) ./TestInteger                                  >  TestInteger.tmp 2>&1
-	-$(GCOV) -b TestInteger.c++ | grep -A 5 "File 'Integer.h'" >> TestInteger.tmp
-
-TestInteger.c++x: TestInteger.tmp
+	$(VALGRIND) ./TestInteger                                    >  TestInteger.tmp 2>&1
+	-$(GCOV) -b TestInteger.c++ | grep -A 5 "File '.*Integer.h'" >> TestInteger.tmp
 	cat TestInteger.tmp
 
-all: $(FILES)
+all: RunInteger TestInteger
 
 check:
 	@not_found=0;                                 \
-    for i in $(CHECKS);                           \
+    for i in $(FILES);                            \
     do                                            \
         if [ -e $$i ];                            \
         then                                      \
@@ -139,7 +131,8 @@ clean:
 	rm -f  *.gcov
 	rm -f  *.plist
 	rm -f  *.tmp
-	rm -f  $(FILES)
+	rm -f  RunInteger
+	rm -f  TestInteger
 	rm -rf *.dSYM
 	rm -rf latex
 
@@ -147,12 +140,14 @@ config:
 	git config -l
 
 docker:
-	docker run -it -v $(PWD):/usr/gcc -w /usr/gcc gpdowning/gcc
+	docker run -it -v $(PWD):/usr/cs371g -w /usr/cs371g gpdowning/gcc
 
 format:
 	$(CLANG-FORMAT) -i Integer.h
 	$(CLANG-FORMAT) -i RunInteger.c++
 	$(CLANG-FORMAT) -i TestInteger.c++
+
+run: RunCollatz.tmp
 
 scrub:
 	make clean
@@ -168,7 +163,15 @@ status:
 	git remote -v
 	git status
 
-test: html Integer.log RunInteger.c++x TestInteger.c++x integer-tests
+test: TestInteger.tmp
+
+travis: integer-tests html Integer.log
+	ls -al
+	make
+	ls -al
+	make run
+	ls -al
+	make test
 	ls -al
 	make check
 

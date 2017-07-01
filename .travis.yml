@@ -36,16 +36,4 @@ before_script:
 
 script:
     - date
-    - ls -al
-    - ls -al examples
-    - ls -al exercises
-    - ls -al projects/collatz
-    - ls -al projects/integer
-    - make
-    - ls -al
-    - ls -al examples
-    - ls -al exercises
-    - ls -al projects/collatz
-    - ls -al projects/integer
-    - make run
-    - make test
+    - make travis

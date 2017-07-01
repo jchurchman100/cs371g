@@ -218,6 +218,15 @@ test:
 	@echo
 	cd projects/integer; make test
 
+travis:
+	cd examples; make travis
+	@echo
+	cd exercises; make travis
+	@echo
+	cd projects/collatz; make travis
+	@echo
+	cd projects/integer; make travis
+
 versions:
 	which cmake
 	cmake --version

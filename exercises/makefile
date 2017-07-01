@@ -94,3 +94,9 @@ clean:
 	rm -f $(FILES)
 
 test: $(FILES:=.c++x)
+
+travis:
+	ls -al
+	make
+	ls -al
+	make test
