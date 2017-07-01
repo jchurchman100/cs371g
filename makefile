@@ -187,6 +187,13 @@ sync:
     --include "Stack.h"                     \
     --include "Queue.c++"                   \
     --include "PriorityQueue.c++"           \
+    --include "Vector1.c++"                 \
+    --include "Vector2.c++"                 \
+    --include "Vector3.c++"                 \
+    --include "Allocator.c++"               \
+    --include "Memory.h"                    \
+    --include "Vector4.c++"                 \
+    --include "Vector5.c++"                 \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
