@@ -39,8 +39,13 @@ script:
     - ls -al
     - ls -al examples
     - ls -al exercises
-    - make all
+    - ls -al projects/collatz
+    - ls -al projects/integer
+    - make
     - ls -al
     - ls -al examples
     - ls -al exercises
+    - ls -al projects/collatz
+    - ls -al projects/integer
+    - make run
     - make test

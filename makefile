@@ -110,6 +110,9 @@ push:
 	git push
 	git status
 
+run:
+	cd projects/collatz; make run
+
 status:
 	make clean
 	@echo
@@ -211,7 +214,7 @@ test:
 	@echo
 	cd exercises; make test
 	@echo
-	cd projects/collatz; make run; make test
+	cd projects/collatz; make test
 	@echo
 	cd projects/integer; make test
 
