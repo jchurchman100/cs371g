@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-CHECKS :=           \
+FILES :=           \
     .gitignore      \
     Collatz.c++     \
     Collatz.h       \
@@ -17,10 +17,6 @@ CHECKS :=           \
 #    .travis.yml                           \
 #    collatz-tests/GitHubID-RunCollatz.in  \
 #    collatz-tests/GitHubID-RunCollatz.out \
-
-FILES :=        \
-    RunCollatz  \
-    TestCollatz
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
@@ -101,8 +97,6 @@ RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
 
 RunCollatz.tmp: RunCollatz
 	./RunCollatz < RunCollatz.in > RunCollatz.tmp
-
-RunCollatz.c++x: RunCollatz.tmp
 	-diff RunCollatz.tmp RunCollatz.out
 
 TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
@@ -113,15 +107,13 @@ TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
 TestCollatz.tmp: TestCollatz
 	$(VALGRIND) ./TestCollatz                                >  TestCollatz.tmp 2>&1
 	-$(GCOV) -b Collatz.c++ | grep -A 5 "File 'Collatz.c++'" >> TestCollatz.tmp
-
-TestCollatz.c++x: TestCollatz.tmp
 	cat TestCollatz.tmp
 
-all: $(FILES)
+all: RunCollatz TestCollatz
 
 check:
 	@not_found=0;                                 \
-    for i in $(CHECKS);                           \
+    for i in $(FILES);                            \
     do                                            \
         if [ -e $$i ];                            \
         then                                      \
@@ -144,7 +136,8 @@ clean:
 	rm -f  *.gcov
 	rm -f  *.plist
 	rm -f  *.tmp
-	rm -f  $(FILES)
+	rm -f  RunCollatz
+	rm -f  TestCollatz
 	rm -rf *.dSYM
 	rm -rf latex
 
@@ -152,13 +145,15 @@ config:
 	git config -l
 
 docker:
-	docker run -it -v $(PWD):/usr/gcc -w /usr/gcc gpdowning/gcc
+	docker run -it -v $(PWD):/usr/cs371g -w /usr/cs371g gpdowning/gcc
 
 format:
 	$(CLANG-FORMAT) -i Collatz.c++
 	$(CLANG-FORMAT) -i Collatz.h
 	$(CLANG-FORMAT) -i RunCollatz.c++
 	$(CLANG-FORMAT) -i TestCollatz.c++
+
+run: RunCollatz.tmp
 
 scrub:
 	make clean
@@ -174,7 +169,7 @@ status:
 	git remote -v
 	git status
 
-test: html Collatz.log RunCollatz.c++x TestCollatz.c++x collatz-tests
+test: TestCollatz.tmp collatz-tests html Collatz.log
 	ls -al
 	make check
 

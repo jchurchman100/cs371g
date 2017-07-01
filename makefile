@@ -77,16 +77,7 @@ clean:
 config:
 	git config -l
 
-docker-build:
-	docker build -t gpdowning/gcc .
-
-docker-pull:
-	docker pull gpdowning/gcc
-
-docker-push:
-	docker push gpdowning/gcc
-
-docker-run:
+docker:
 	docker run -it -v $(PWD):/usr/cs371g -w /usr/cs371g gpdowning/gcc
 
 init:
@@ -220,7 +211,7 @@ test:
 	@echo
 	cd exercises; make test
 	@echo
-	cd projects/collatz; make test
+	cd projects/collatz; make run; make test
 	@echo
 	cd projects/integer; make test
 
