@@ -168,8 +168,6 @@ travis: integer-tests html Integer.log
 	ls -al
 	make
 	ls -al
-	make run
-	ls -al
 	make test
 	ls -al
 	make check
