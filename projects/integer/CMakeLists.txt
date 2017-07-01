@@ -18,10 +18,10 @@ link_libraries (gtest_main)
 
 enable_testing()
 
-add_executable     (RunCollatz Collatz.c++ RunCollatz.c++)
-add_custom_command (OUTPUT RunCollatz.tmp COMMAND RunCollatz < ../RunCollatz.in > RunCollatz.tmp)
-add_custom_target  (run ALL DEPENDS RunCollatz.tmp)
-add_test           (RunCollatz diff RunCollatz.tmp ../RunCollatz.out)
+add_executable     (RunInteger RunInteger.c++)
+add_custom_command (OUTPUT RunInteger.tmp COMMAND RunInteger > RunInteger.tmp)
+add_custom_target  (run ALL DEPENDS RunInteger.tmp)
+add_test           (RunInteger diff RunInteger.tmp ../RunInteger.out)
 
-add_executable (TestCollatz Collatz.c++ TestCollatz.c++)
-add_test       (TestCollatz TestCollatz)
+add_executable (TestInteger TestInteger.c++)
+add_test       (TestInteger TestInteger)
