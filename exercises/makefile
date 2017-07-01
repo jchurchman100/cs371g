@@ -96,6 +96,7 @@ clean:
 test: $(FILES:=.c++x)
 
 travis:
+	make clean
 	ls -al
 	make
 	ls -al

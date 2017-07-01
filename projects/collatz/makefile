@@ -172,6 +172,7 @@ status:
 test: TestCollatz.tmp
 
 travis: collatz-tests html Collatz.log
+	make clean
 	ls -al
 	make
 	ls -al

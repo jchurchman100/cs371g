@@ -55,8 +55,6 @@ else                                                                    # UTCS
 endif
 
 all:
-	make clean
-	@echo
 	cd examples; make all
 	@echo
 	cd exercises; make all
@@ -112,6 +110,8 @@ push:
 
 run:
 	cd projects/collatz; make run
+	@echo
+	cd projects/integer; make run
 
 status:
 	make clean

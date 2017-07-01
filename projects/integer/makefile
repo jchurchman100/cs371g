@@ -166,6 +166,7 @@ status:
 test: TestInteger.tmp
 
 travis: integer-tests html Integer.log
+	make clean
 	ls -al
 	make
 	ls -al
