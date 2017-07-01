@@ -26,7 +26,7 @@ stack
 
     vector
     list
-    deque (default)
+    deque  (default)
 */
 
 /*
@@ -48,7 +48,7 @@ queue
 
     NOT vector
     list
-    deque (default)
+    deque      (default)
 */
 
 /*
@@ -61,7 +61,7 @@ priority_queue
 
     highest or lowest priority pop
 
-    vector (default)
+    vector   (default)
     NOT list
     deque
 */
