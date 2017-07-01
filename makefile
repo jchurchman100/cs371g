@@ -108,11 +108,6 @@ push:
 	git push
 	git status
 
-run:
-	cd projects/collatz; make run
-	@echo
-	cd projects/integer; make run
-
 status:
 	make clean
 	@echo

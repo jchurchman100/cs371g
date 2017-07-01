@@ -153,8 +153,6 @@ format:
 	$(CLANG-FORMAT) -i RunCollatz.c++
 	$(CLANG-FORMAT) -i TestCollatz.c++
 
-run: RunCollatz.tmp
-
 scrub:
 	make clean
 	rm -f  Collatz.log
@@ -169,7 +167,7 @@ status:
 	git remote -v
 	git status
 
-test: TestCollatz.tmp
+test: RunCollatz.tmp TestCollatz.tmp
 
 travis: collatz-tests html Collatz.log
 	make clean

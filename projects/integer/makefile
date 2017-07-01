@@ -147,8 +147,6 @@ format:
 	$(CLANG-FORMAT) -i RunInteger.c++
 	$(CLANG-FORMAT) -i TestInteger.c++
 
-run: RunInteger.tmp
-
 scrub:
 	make clean
 	rm -f  Integer.log
@@ -163,7 +161,7 @@ status:
 	git remote -v
 	git status
 
-test: TestInteger.tmp
+test: RunInteger.tmp TestInteger.tmp
 
 travis: integer-tests html Integer.log
 	make clean
