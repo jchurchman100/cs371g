@@ -147,7 +147,7 @@ format:
 	$(CLANG-FORMAT) -i RunInteger.c++
 	$(CLANG-FORMAT) -i TestInteger.c++
 
-run: RunCollatz.tmp
+run: RunInteger.tmp
 
 scrub:
 	make clean
