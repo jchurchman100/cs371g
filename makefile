@@ -181,7 +181,9 @@ sync:
     --include "Stack.c++"                   \
     --include "Stack.h"                     \
     --include "Queue.c++"                   \
+    --include "Queue.h"                     \
     --include "PriorityQueue.c++"           \
+    --include "PriorityQueue.h"             \
     --include "Vector1.c++"                 \
     --include "Vector2.c++"                 \
     --include "Vector3.c++"                 \

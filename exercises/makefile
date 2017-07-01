@@ -18,7 +18,9 @@ FILES :=          \
     RMSE          \
     Transform     \
     Accumulate    \
-    Stack
+    Stack         \
+    Queue         \
+    PriorityQueue
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

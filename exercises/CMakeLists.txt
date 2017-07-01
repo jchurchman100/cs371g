@@ -28,7 +28,15 @@ set (FILES
     Copy
     Fill
     Count
-    Reverse)
+    Reverse
+    RangeIterator
+    Range
+    RMSE
+    Transform
+    Accumulate
+    Stack
+    Queue
+    PriorityQueue)
 
 enable_testing()
 

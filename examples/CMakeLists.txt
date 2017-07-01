@@ -42,7 +42,7 @@ endforeach ()
 
 target_compile_options (Returns PRIVATE -Wno-return-stack-address)
 
-add_custom_target (scrub rm -f BoostSerialization.bin)
+add_custom_target (scrub rm -f *.bin)
 
 add_custom_target (versions)
 
