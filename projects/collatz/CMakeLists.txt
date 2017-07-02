@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.8.2)
 
-project (Tests CXX)
+project (Collatz CXX)
 
 find_package(Boost REQUIRED COMPONENTS serialization)
 find_package(GTest REQUIRED)
