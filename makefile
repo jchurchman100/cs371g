@@ -185,6 +185,7 @@ sync:
     --include "PriorityQueue.c++"           \
     --include "PriorityQueue.h"             \
     --include "Vector1.c++"                 \
+    --include "Vector1.h"                   \
     --include "Vector2.c++"                 \
     --include "Vector3.c++"                 \
     --include "Allocator.c++"               \
