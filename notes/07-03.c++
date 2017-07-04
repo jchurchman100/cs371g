@@ -1,106 +1,95 @@
 // -----------
-// Fri, 30 Jun
+// Mon,  3 Jul
 // -----------
 
-/*
-workhorse containers:
-    vector
-    list
-    deque
+template <typename T>
+struct less {
+    bool operator () (const T& lhs, const T& rhs) const {
+        return lhs < rhs;}};
 
-container adapters:
-    stack
-    queue
-    priority_queue
+struct A {
+    int i;
+    double x;};
+
+int main () {
+    less<int> x;
+    cout << x(2, 3);           // true
+    cout << less<int>()(2, 3); // true
+
+    int* p = new int[3];       // three ints
+    fill(p, p + 3, 2);
+    delete [] p;               // [] very important
+
+    int* q = new int(2);       // single int
+    ...
+    delete q;
+
+    T* const p = new T[s];     // T(),  s times
+    fill(p, p + s, 2);         // =(T), s times
+    ++p;                       // not ok
+    ++*p;
+    delete [] p;               // ~T(), s times
+
+    int i = 2;
+    i = 3;
+    delete &i;
+
+    int a[] = {2, 3, 4};
+
+    A x = {2, 3,5};
+
+    intializer_list<int> y = {2, 3, 4};
+
+    vector<int> v1(10, 2);    // size 10, value 2
+    vector<int> v2{10, 2};    // size 2,  values 10 and 2
+    vector<int> v3 = (10, 2); // not ok
+    vector<int> v4 = {10, 2};
+
+/*
+mistakes can I make with new and delete:
+
+1. deleting an already deleted object
+2. losing track of what new gave you earlier
+3. incorrect use of the brackets
+4. deleting wrong the address
 */
 
 /*
-stack
-    push -> push_back
-    pop -> pop_back
+vector:
+    constructor:
+        default
+        size
+        size and value
+        initializer_list
+
+    index, two of them
+
+    begin, two of them
+    end,   two of them
+
     size
-    empty
-    top -> back, two of them, one const, one not
-
-    LIFO
-
-    vector
-    list
-    deque  (default)
 */
 
 /*
-class relationships:
-    inheritance
-    containment
+kinds of casts:
+    const_cast
+    static_cast
+    reinterpret_cast
+    dynamic_cast
 */
-
-/*
-queue
-    push  -> push_back
-    pop   -> pop_front
-    size
-    empty
-    back  -> back, two of them, one const, one not
-    front -> front, two of them, one const, one not
-
-    FIFO
-
-    NOT vector
-    list
-    deque      (default)
-*/
-
-/*
-priority_queue
-    push  -> push_back
-    pop   -> pop_front
-    size
-    empty
-    top -> back, one of them, const
-
-    highest or lowest priority pop
-
-    vector   (default)
-    NOT list
-    deque
-*/
-
-int  i = 2;
-int& r = i;
-
-template <typename T, typename C = deque<T>>
-class stack {
-    private:
-        C _c;
-    public:
-        stack (const C& c = C()) :
-            _c (c)
-            {}
-
-        void push (const T& v) {
-            _c.push_back(v);}
-
-        const T& top () const {
-            return _c.back();}
-
-        T& top () {
-            return _c.back();}
-
-        void pop () {
-            _c.pop_back();}
 
 // ---------
 // Questions
 // ---------
 
 /*
-Which backing container can not be used with queue? Why not?
-Which backing container can not be used with priority_queue? Why not?
-Why is deque the default backing container for stack and queue?
-Why is vector the default backing container for priority_queue?
-What can vector do faster than deque? Why?
-What can deque do faster than vector? Why?
-Instead of having one constructor for stack with the backing container argument defaulted, it's better to have two constructors. See posted solution. Why?
-Why is stack's one-argument constructor marked explicit?
+What is the default comparator for priority_queue?
+Why does priority_queue have top() instead of back() and front()?
+Why does priority_queue only have one top()?
+What is less<T>?
+What does new T[s] invoke and how many times?
+What does fill(a, a + s, v) invoke and how many times?
+When is it important to use [] in new and delete?
+What is initializer_list<T>?
+Should the const method call the non-const method for reuse or the other way around? Why?
 */
