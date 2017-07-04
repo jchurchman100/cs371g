@@ -20,7 +20,8 @@ FILES :=          \
     Accumulate    \
     Stack         \
     Queue         \
-    PriorityQueue
+    PriorityQueue \
+    Vector1
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

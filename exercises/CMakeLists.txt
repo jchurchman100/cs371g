@@ -36,7 +36,8 @@ set (FILES
     Accumulate
     Stack
     Queue
-    PriorityQueue)
+    PriorityQueue
+    Vector1)
 
 enable_testing()
 
