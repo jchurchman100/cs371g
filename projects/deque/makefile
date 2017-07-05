@@ -66,9 +66,6 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-deque-tests:
-	git clone https://github.com/cs371gt-summer-2017/deque-tests.git
-
 html: Doxyfile Deque.h
 	$(DOXYGEN) Doxyfile
 
@@ -137,7 +134,6 @@ scrub:
 	make clean
 	rm -f  Deque.log
 	rm -f  Doxyfile
-	rm -rf deque-tests
 	rm -rf html
 
 status:
@@ -149,7 +145,7 @@ status:
 
 test: TestDeque.tmp
 
-travis: deque-tests html Deque.log
+travis: html Deque.log
 	make clean
 	ls -al
 	make
