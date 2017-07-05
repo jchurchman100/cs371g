@@ -5,6 +5,9 @@ project (Examples CXX)
 find_package(Boost REQUIRED COMPONENTS serialization)
 find_package(GTest REQUIRED)
 
+find_program (CLANG-CHECK clang-check)
+message(${CLANG-CHECK})
+
 add_compile_options (-pedantic -Wall -Weffc++)
 
 set (CMAKE_CXX_STANDARD          14)
@@ -16,6 +19,8 @@ link_libraries (gtest)
 link_libraries (gtest_main)
 
 set (FILES
+    Boost
+    GTest
     Hello
     Exceptions
     Exceptions2
@@ -36,13 +41,16 @@ set (FILES
 enable_testing()
 
 foreach (file ${FILES})
-    add_executable (${file} ${file}.c++)
-    add_test       (${file} ${file})
+    add_executable (${file} ../${file}.c++)
+
+    add_test (${file}.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../${file}.c++ --)
+    add_test (${file}.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../${file}.c++ --)
+    add_test (${file}                                                         ${file})
+
+    set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "${file}.bin" "${file}.plist")
 endforeach ()
 
 target_compile_options (Returns PRIVATE -Wno-return-stack-address)
-
-add_custom_target (scrub rm -f *.bin)
 
 add_custom_target (versions)
 

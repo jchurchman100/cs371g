@@ -62,6 +62,8 @@ all:
 	cd projects/collatz; make all
 	@echo
 	cd projects/integer; make all
+	@echo
+	cd projects/deque; make all
 
 clean:
 	cd examples; make clean
@@ -71,6 +73,8 @@ clean:
 	cd projects/collatz; make clean
 	@echo
 	cd projects/integer; make clean
+	@echo
+	cd projects/deque; make clean
 
 config:
 	git config -l
@@ -104,6 +108,7 @@ push:
 	git add notes
 	git add projects/collatz
 	git add projects/integer
+	git add projects/deque
 	git commit -m "another commit"
 	git push
 	git status
@@ -205,7 +210,6 @@ sync:
     --exclude "*"                           \
     ../../projects/c++/collatz/ projects/collatz
 	@rsync -r -t -u -v --delete             \
-    --include "Integer.c++"                 \
     --include "Integer.h"                   \
     --include "RunInteger.c++"              \
     --include "RunInteger.out"              \
@@ -213,6 +217,12 @@ sync:
     --include "TestInteger.out"             \
     --exclude "*"                           \
     ../../projects/c++/integer/ projects/integer
+	@rsync -r -t -u -v --delete             \
+    --include "Deque.h"                     \
+    --include "TestDeque.c++"               \
+    --include "TestDeque.out"               \
+    --exclude "*"                           \
+    ../../projects/c++/deque/ projects/deque
 
 test:
 	cd examples; make test
@@ -222,6 +232,8 @@ test:
 	cd projects/collatz; make test
 	@echo
 	cd projects/integer; make test
+	@echo
+	cd projects/deque; make test
 
 travis:
 	cd examples; make travis
@@ -231,6 +243,8 @@ travis:
 	cd projects/collatz; make travis
 	@echo
 	cd projects/integer; make travis
+	@echo
+	cd projects/deque; make travis
 
 versions:
 	which cmake

@@ -1,0 +1,13 @@
+.DS_Store
+*.dSYM
+*.gcda
+*.gcno
+*.gcov
+*.plist
+deque-tests
+Doxyfile
+Icon?
+RunDeque
+RunDeque.tmp
+TestDeque
+TestDeque.tmp

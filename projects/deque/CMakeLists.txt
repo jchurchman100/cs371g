@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.8.2)
 
-project (Examples CXX)
+project (Deque CXX)
 
 find_package(Boost REQUIRED COMPONENTS serialization)
 find_package(GTest REQUIRED)
@@ -8,8 +8,14 @@ find_package(GTest REQUIRED)
 find_program (CLANG-CHECK clang-check)
 message(${CLANG-CHECK})
 
+find_program(CLANG-FORMAT clang-format)
+message(${CLANG-FORMAT})
+
 find_program(GCOV gcov)
 message(${GCOV})
+
+find_program(VALGRIND valgrind)
+message(${VALGRIND})
 
 #add_compile_options (-fprofile-arcs -ftest-coverage)
 add_compile_options (-pedantic -Wall -Weffc++)
@@ -22,40 +28,17 @@ link_libraries (boost_serialization)
 link_libraries (gtest)
 link_libraries (gtest_main)
 
-set (FILES
-    UnitTests3
-    Coverage1
-    Coverage2
-    Coverage3
-    IsPrime1
-    IsPrime2
-    StrCmp
-    Equal
-    Copy
-    Fill
-    Count
-    Reverse
-    RangeIterator
-    Range
-    RMSE
-    Transform
-    Accumulate
-    Stack
-    Queue
-    PriorityQueue
-    Vector1)
-
 enable_testing()
 
-foreach (file ${FILES})
-    add_executable (${file} ../${file}.c++)
+add_executable     (TestDeque TestDeque.c++)
+add_custom_command (OUTPUT TestDeque.tmp COMMAND ${VALGRIND} TestDeque > TestDeque.tmp)
+add_custom_target  (TestDeque.c++x DEPENDS TestDeque.tmp)
 
-    add_test (${file}.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../${file}.c++ --)
-    add_test (${file}.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../${file}.c++ --)
-    add_test (${file}                                                         ${file})
+add_test (TestDeque.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../TestDeque.c++ --)
+add_test (TestDeque.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../TestDeque.c++ --)
+add_test (TestDeque        ${MAKE}                                          TestDeque.c++x)
 
-    set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "${file}.bin" "${file}.plist")
-endforeach ()
+set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "TestDeque.bin" "TestDeque.plist")
 
 add_custom_target (versions)
 
