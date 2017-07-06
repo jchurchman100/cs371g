@@ -77,40 +77,23 @@ class vector {
                 ++b;}
             _x.deallocate(_b);}
 
+// ---------
+// Questions
+// ---------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+stack is to backing container as vector is to what?
+In vector's copy assignment how do you check for self-assignment?
+What does vector's move constructor do?
+What does vector's move assignment do?
+What operations of type T does the following invoke:
+    vector<T> x(s, v);
+assuming the real vector and that v is another T?
+What does allocator.allocate() do?
+What does allocator.construct() do?
+What does allocator.destroy() do?
+What does allocator.deallocate() do?
+What does uninitialized_fill() do?
+What does uninitialized_copy() do?
+Why would you ever do &*p?
+*/
