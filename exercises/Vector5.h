@@ -46,9 +46,9 @@ class my_vector {
     private:
         allocator_type _a;
 
-        pointer _b;
-        pointer _e; // size
-        pointer _l; // capacity
+        pointer _b = nullptr;
+        pointer _e = nullptr; // size
+        pointer _l = nullptr; // capacity
 
     private:
         bool valid () const {
@@ -64,20 +64,47 @@ class my_vector {
             assert(valid());}
 
     public:
-        explicit my_vector (size_type s = 0, const_reference v = value_type(), const allocator_type& a = allocator_type()) :
+        my_vector () :
+                _a (),
+                _b (nullptr),
+                _e (nullptr),
+                _l (nullptr) {
+            assert(valid());}
+
+        explicit my_vector (size_type s) :
+                _a (),
+                _b ((s == 0) ? nullptr : _a.allocate(s)),
+                _e ((s == 0) ? nullptr : _b + s),
+                _l ((s == 0) ? nullptr : _b + s) {
+            my_uninitialized_fill(_a, begin(), end(), value_type());
+            assert(valid());}
+
+        my_vector (size_type s, const_reference v) :
+                _a (),
+                _b ((s == 0) ? nullptr : _a.allocate(s)),
+                _e ((s == 0) ? nullptr : _b + s),
+                _l ((s == 0) ? nullptr : _b + s) {
+            my_uninitialized_fill(_a, begin(), end(), v);
+            assert(valid());}
+
+        my_vector (size_type s, const_reference v, const allocator_type& a) :
                 _a (a),
-                _b (s == 0 ? nullptr : _a.allocate(s)),
-                _e (s == 0 ? nullptr : _b + s),
-                _l (s == 0 ? nullptr : _b + s) {
+                _b ((s == 0) ? nullptr : _a.allocate(s)),
+                _e ((s == 0) ? nullptr : _b + s),
+                _l ((s == 0) ? nullptr : _b + s) {
             my_uninitialized_fill(_a, begin(), end(), v);
             assert(valid());}
 
         my_vector (const my_vector& rhs) :
-                _a (rhs._a) {
-            _b = _a.allocate(rhs.size());
-            _e = _l = _b + rhs.size();
+                _a (rhs._a),
+                _b ((rhs.size() == 0) ? nullptr : _a.allocate(rhs.size())),
+                _e (_b + rhs.size()),
+                _l (_e) {
             my_uninitialized_copy(_a, rhs.begin(), rhs.end(), begin());
             assert(valid());}
+
+        my_vector (my_vector&& rhs) {
+            swap(rhs);}
 
         ~my_vector () {
             if (!empty()) {
@@ -101,6 +128,13 @@ class my_vector {
                 reserve(rhs.size());
                 _e = my_uninitialized_copy(_a, rhs.begin(), rhs.end(), begin());}
             assert(valid());
+            return *this;}
+
+        my_vector& operator = (my_vector&& rhs) {
+            if (this == &rhs)
+                return *this;
+            my_vector that(std::move(rhs));
+            swap(that);
             return *this;}
 
         reference operator [] (size_type i) {
@@ -131,14 +165,14 @@ class my_vector {
             return const_cast<my_vector&>(*this).begin();}
 
         size_type capacity () const {
-            return begin() == nullptr ? 0 : _l - _b;}
+            return (begin() == nullptr) ? 0 : _l - _b;}
 
         void clear () {
             resize(0);
             assert(valid());}
 
         bool empty () const {
-            return size() == 0;}
+            return (size() == 0);}
 
         iterator end () {
             return _e;}

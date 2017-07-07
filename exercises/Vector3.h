@@ -70,30 +70,41 @@ class my_vector {
         pointer _e = nullptr;
 
     public:
-        explicit my_vector (size_type s = 0, const_reference v = T()) :
-                _b ((s == 0) ? nullptr : new T[s]),
-                _e ((s == 0) ? nullptr : _b + s) {
-            std::fill(_b, _e, v);}
+        my_vector () = default;
 
-        my_vector (std::initializer_list<T> rhs) :
-                _b ((rhs.size() == 0) ? nullptr : new T[rhs.size()]),
-                _e ((rhs.size() == 0) ? nullptr : _b + rhs.size()) {
-            std::copy(rhs.begin(), rhs.end(), _b);}
+        explicit my_vector (size_type s) :
+                _b ((s == 0) ? nullptr : new value_type[s]),
+                _e (_b + s) {
+            std::fill(begin(), end(), value_type());}
+
+        my_vector (size_type s, const_reference v) :
+                _b ((s == 0) ? nullptr : new value_type[s]),
+                _e (_b + s) {
+            std::fill(begin(), end(), v);}
+
+        my_vector (std::initializer_list<value_type> rhs) :
+                _b ((rhs.size() == 0) ? nullptr : new value_type[rhs.size()]),
+                _e (_b + rhs.size()) {
+            std::copy(rhs.begin(), rhs.end(), begin());}
 
         my_vector (const my_vector& rhs) :
-                _b ((rhs.size() == 0) ? nullptr : new T[rhs.size()]),
-                _e ((rhs.size() == 0) ? nullptr : _b + rhs.size()) {
-            std::copy(rhs._b, rhs._e, _b);}
+                _b ((rhs.size() == 0) ? nullptr : new value_type[rhs.size()]),
+                _e (_b + rhs.size()) {
+            std::copy(rhs.begin(), rhs.end(), begin());}
 
         my_vector (my_vector&& rhs) {
             swap(rhs);}
 
         my_vector& operator = (const my_vector& rhs) {
+            if (this == &rhs)
+                return *this;
             my_vector that(rhs);
             swap(that);
             return *this;}
 
         my_vector& operator = (my_vector&& rhs) {
+            if (this == &rhs)
+                return *this;
             my_vector that(std::move(rhs));
             swap(that);
             return *this;}
@@ -128,7 +139,7 @@ class my_vector {
             return const_cast<my_vector*>(this)->end();}
 
         size_type size () const {
-            return _e - _b;}
+            return end() - begin();}
 
         void swap (my_vector& rhs) {
             std::swap(_b, rhs._b);

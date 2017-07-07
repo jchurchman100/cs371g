@@ -70,48 +70,68 @@ class my_vector {
         using const_iterator  = typename allocator_type::const_pointer;
 
     private:
-        A       _a;
-        pointer _b;
-        pointer _e;
+        allocator_type _a;
+        pointer        _b = nullptr;
+        pointer        _e = nullptr;
 
     public:
-        explicit my_vector (size_type s = 0, const_reference v = T(), const A& a = A()) :
-                _a (a),
-                _b (s == 0 ? nullptr : _a.allocate(s)),
-                _e (s == 0 ? nullptr : _b + s) {
-            my_uninitialized_fill(_a, _b, _e, v);}
+        my_vector () = default;
 
-        my_vector (std::initializer_list<T> rhs, const A& a = A()) :
+        explicit my_vector (size_type s) :
+                _a (),
+                _b ((s == 0) ? nullptr : _a.allocate(s)),
+                _e (_b + s) {
+            my_uninitialized_fill(_a, begin(), end(), value_type());}
+
+        my_vector (size_type s, const_reference v) :
+                _a (),
+                _b ((s == 0) ? nullptr : _a.allocate(s)),
+                _e (_b + s) {
+            my_uninitialized_fill(_a, begin(), end(), v);}
+
+        my_vector (size_type s, const_reference v, const allocator_type& a) :
                 _a (a),
-                _b (rhs.size() == 0 ? nullptr : _a.allocate(rhs.size())),
-                _e (rhs.size() == 0 ? nullptr : _b + rhs.size()) {
-            my_uninitialized_copy(_a, rhs.begin(), rhs.end(), _b);}
+                _b ((s == 0) ? nullptr : _a.allocate(s)),
+                _e (_b + s) {
+            my_uninitialized_fill(_a, begin(), end(), v);}
+
+        my_vector (std::initializer_list<value_type> rhs) :
+                _a (),
+                _b ((rhs.size() == 0) ? nullptr : _a.allocate(rhs.size())),
+                _e (_b + rhs.size()) {
+            my_uninitialized_copy(_a, rhs.begin(), rhs.end(), begin());}
+
+        my_vector (std::initializer_list<value_type> rhs, const allocator_type& a) :
+                _a (a),
+                _b ((rhs.size() == 0) ? nullptr : _a.allocate(rhs.size())),
+                _e (_b + rhs.size()) {
+            my_uninitialized_copy(_a, rhs.begin(), rhs.end(), begin());}
 
         my_vector (const my_vector& rhs) :
                 _a (rhs._a),
-                _b (rhs.size() == 0 ? nullptr : _a.allocate(rhs.size())),
-                _e (rhs.size() == 0 ? nullptr : _b + rhs.size()) {
-            my_uninitialized_copy(_a, rhs._b, rhs._e, _b);}
+                _b ((rhs.size() == 0) ? nullptr : _a.allocate(rhs.size())),
+                _e (_b + rhs.size()) {
+            my_uninitialized_copy(_a, rhs.begin(), rhs.end(), begin());}
 
-        my_vector (my_vector&& rhs) :
-                _a (std::move(rhs._a)),
-                _b (rhs._b),
-                _e (rhs._e) {
-            rhs._b = nullptr;
-            rhs._e = nullptr;}
+        my_vector (my_vector&& rhs) {
+            swap(rhs);}
 
         my_vector& operator = (const my_vector& rhs) {
+            if (this == &rhs)
+                return *this;
             my_vector that(rhs);
             swap(that);
             return *this;}
 
         my_vector& operator = (my_vector&& rhs) {
+            if (this == &rhs)
+                return *this;
             my_vector that(std::move(rhs));
             swap(that);
             return *this;}
 
         ~my_vector () {
-            my_destroy(_a, _b, _e);
+            my_destroy(_a, begin(), end());
             _a.deallocate(_b, size());}
 
         reference operator [] (size_type i) {
@@ -141,7 +161,7 @@ class my_vector {
             return const_cast<my_vector*>(this)->end();}
 
         size_type size () const {
-            return _e - _b;}
+            return end() - begin();}
 
         void swap (my_vector& rhs) {
             std::swap(_a, rhs._a);
