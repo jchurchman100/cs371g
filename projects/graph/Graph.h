@@ -1,5 +1,5 @@
 // --------------------------
-//  projects/c++/graph/Graph.h
+// projects/c++/graph/Graph.h
 // Copyright (C) 2017
 // Glenn P. Downing
 // --------------------------
