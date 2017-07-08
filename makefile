@@ -64,6 +64,8 @@ all:
 	cd projects/integer; make all
 	@echo
 	cd projects/deque; make all
+	@echo
+	cd projects/graph; make all
 
 clean:
 	cd examples; make clean
@@ -75,6 +77,8 @@ clean:
 	cd projects/integer; make clean
 	@echo
 	cd projects/deque; make clean
+	@echo
+	cd projects/graph; make clean
 
 config:
 	git config -l
@@ -109,6 +113,7 @@ push:
 	git add projects/collatz
 	git add projects/integer
 	git add projects/deque
+	git add projects/graph
 	git commit -m "another commit"
 	git push
 	git status
@@ -245,6 +250,8 @@ test:
 	cd projects/integer; make test
 	@echo
 	cd projects/deque; make test
+	@echo
+	cd projects/graph; make test
 
 travis:
 	cd examples; make travis
@@ -256,6 +263,8 @@ travis:
 	cd projects/integer; make travis
 	@echo
 	cd projects/deque; make travis
+	@echo
+	cd projects/graph; make travis
 
 versions:
 	which cmake
