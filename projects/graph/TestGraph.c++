@@ -35,7 +35,7 @@ struct TestGraph : Test {
     // typedefs
     // --------
 
-    typedef          G                     graph_type;
+    using graph_type          = G;
     using vertex_descriptor   = typename G::vertex_descriptor;
     using edge_descriptor     = typename G::edge_descriptor;
     using vertex_iterator     = typename G::vertex_iterator;
