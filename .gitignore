@@ -4,4 +4,6 @@ examples/build
 exercises/build
 Icon?
 projects/collatz/build
+projects/deque/build
+projects/graph/build
 projects/integer/build

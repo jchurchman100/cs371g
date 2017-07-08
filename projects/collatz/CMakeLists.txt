@@ -14,6 +14,9 @@ message(${CLANG-FORMAT})
 find_program(GCOV gcov)
 message(${GCOV})
 
+find_program(MAKE make)
+message(${MAKE})
+
 find_program(VALGRIND valgrind)
 message(${VALGRIND})
 

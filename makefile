@@ -228,6 +228,12 @@ sync:
     --include "TestDeque.out"               \
     --exclude "*"                           \
     ../../projects/c++/deque/ projects/deque
+	@rsync -r -t -u -v --delete             \
+    --include "Graph.h"                     \
+    --include "TestGraph.c++"               \
+    --include "TestGraph.out"               \
+    --exclude "*"                           \
+    ../../projects/c++/graph/ projects/graph
 
 test:
 	cd examples; make test

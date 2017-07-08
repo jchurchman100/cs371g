@@ -14,6 +14,9 @@ message(${CLANG-FORMAT})
 find_program(GCOV gcov)
 message(${GCOV})
 
+find_program(MAKE make)
+message(${MAKE})
+
 find_program(VALGRIND valgrind)
 message(${VALGRIND})
 
@@ -31,7 +34,7 @@ link_libraries (gtest_main)
 enable_testing()
 
 add_executable     (RunInteger RunInteger.c++)
-add_custom_command (OUTPUT RunInteger.tmp COMMAND RunInteger < ../RunInteger.in > RunInteger.tmp)
+add_custom_command (OUTPUT RunInteger.tmp COMMAND RunInteger > RunInteger.tmp)
 add_custom_target  (RunInteger.c++x diff RunInteger.tmp ../RunInteger.out DEPENDS RunInteger.tmp)
 
 add_test (RunInteger.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../RunInteger.c++ --)
