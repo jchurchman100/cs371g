@@ -16,7 +16,12 @@ FILES :=                    \
     FunctionOverloading     \
     FunctionGenerics        \
     FunctionSpecializations \
-    Functions
+    Functions               \
+    InitializerList         \
+    Initializations         \
+    Sets                    \
+    Maps                    \
+    Auto
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

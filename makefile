@@ -144,7 +144,11 @@ sync:
     --include "FunctionOverloading.c++"     \
     --include "FunctionGenerics.c++"        \
     --include "FunctionSpecializations.c++" \
-    --include "Functions.c++"               \
+    --include "InitializerList.c++"         \
+    --include "Initializations.c++"         \
+    --include "Sets.c++"                    \
+    --include "Maps.c++"                    \
+    --include "Auto.c++"                    \
     --exclude "*"                           \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete             \
@@ -207,6 +211,7 @@ sync:
     --include "Vector4.h"                   \
     --include "Vector5.c++"                 \
     --include "Vector5.h"                   \
+    --include "Pair.c++"                    \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \

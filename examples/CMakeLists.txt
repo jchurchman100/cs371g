@@ -36,7 +36,12 @@ set (FILES
     FunctionOverloading
     FunctionGenerics
     FunctionSpecializations
-    Functions)
+    Functions
+    InitializerList
+    Initializations
+    Sets
+    Maps
+    Auto)
 
 enable_testing()
 
