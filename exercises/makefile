@@ -26,7 +26,8 @@ FILES :=          \
     Vector3       \
     Allocator     \
     Vector4       \
-    Vector5
+    Vector5       \
+    Pair
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
