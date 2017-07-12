@@ -2,26 +2,17 @@ cmake_minimum_required (VERSION 3.8.2)
 
 project (Examples CXX)
 
-find_package(Boost REQUIRED COMPONENTS serialization)
-find_package(GTest REQUIRED)
-
 find_program (CLANG-CHECK clang-check)
 message(${CLANG-CHECK})
-
-add_compile_options (-pedantic -Wall -Weffc++)
 
 set (CMAKE_CXX_STANDARD          14)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 set (CMAKE_CXX_EXTENSIONS        OFF)
 
-link_libraries (boost_serialization)
-link_libraries (gtest)
-link_libraries (gtest_main)
-
 set (FILES
     Boost
-    GTest
     Hello
+    Assertions
     Exceptions
     Exceptions2
     Exceptions3
@@ -41,51 +32,36 @@ set (FILES
     Initializations
     Sets
     Maps
-    Auto)
+    Auto
+    Test)
 
 enable_testing()
 
 foreach (file ${FILES})
-    add_executable (${file} ../${file}.c++)
-
-    add_test (${file}.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../${file}.c++ --)
-    add_test (${file}.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../${file}.c++ --)
-    add_test (${file}                                                         ${file})
-
-    set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "${file}.bin" "${file}.plist")
+    add_executable         (${file}                                                      ../${file}.c++)
+    add_test               (${file}.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../${file}.c++ --)
+    add_test               (${file}.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../${file}.c++ --)
+    add_test               (${file}                                                         ${file})
+    set_property           (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES          "${file}.plist")
+    target_compile_options (${file} PRIVATE -pedantic -Wall -Weffc++)
 endforeach ()
+
+set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "BoostSerialization.bin")
 
 target_compile_options (Returns PRIVATE -Wno-return-stack-address)
 
-add_custom_target (versions)
+target_link_libraries (BoostSerialization PRIVATE boost_serialization)
 
-set (APPS
-    clang-check
-    clang-format
-    cmake
-    doxygen
-    g++
-    gcov
-    git
-    make
-    valgrind)
+add_executable         (CommandLine                                                      ../CommandLine.c++)
+add_test               (CommandLine.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../CommandLine.c++ --)
+add_test               (CommandLine.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../CommandLine.c++ --)
+add_test               (CommandLine                                                         CommandLine nothing to be done)
+set_property           (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES              "CommandLine.plist")
+target_compile_options (CommandLine PRIVATE -pedantic -Wall -Weffc++)
 
-foreach (app ${APPS})
-    add_custom_command (TARGET versions
-        COMMAND echo which ${app}
-        COMMAND      which ${app}
-        COMMAND echo ${app} --version
-        COMMAND      ${app} --version
-        COMMAND echo)
-endforeach ()
-
-set (PKGS
-    Boost
-    GTest)
-
-foreach (pkg ${PKGS})
-    add_custom_command (TARGET versions
-        COMMAND echo ${pkg}_VERSION
-        COMMAND echo ${${pkg}_VERSION}
-        COMMAND echo)
-endforeach ()
+add_executable         (FileInputOutput                                                      ../FileInputOutput.c++)
+add_test               (FileInputOutput.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../FileInputOutput.c++ --)
+add_test               (FileInputOutput.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../FileInputOutput.c++ --)
+add_test               (FileInputOutput                                                         FileInputOutput ../FileInputOutput.c++)
+set_property           (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES                  "FileInputOutput.plist")
+target_compile_options (FileInputOutput PRIVATE -pedantic -Wall -Weffc++)

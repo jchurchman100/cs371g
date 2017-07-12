@@ -2,17 +2,8 @@ cmake_minimum_required (VERSION 3.8.2)
 
 project (Graph CXX)
 
-find_package(Boost REQUIRED COMPONENTS serialization)
-find_package(GTest REQUIRED)
-
 find_program (CLANG-CHECK clang-check)
 message(${CLANG-CHECK})
-
-find_program(CLANG-FORMAT clang-format)
-message(${CLANG-FORMAT})
-
-find_program(GCOV gcov)
-message(${GCOV})
 
 find_program(MAKE make)
 message(${MAKE})
@@ -20,16 +11,9 @@ message(${MAKE})
 find_program(VALGRIND valgrind)
 message(${VALGRIND})
 
-#add_compile_options (-fprofile-arcs -ftest-coverage)
-add_compile_options (-pedantic -Wall -Weffc++)
-
 set (CMAKE_CXX_STANDARD          14)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 set (CMAKE_CXX_EXTENSIONS        OFF)
-
-link_libraries (boost_serialization)
-link_libraries (gtest)
-link_libraries (gtest_main)
 
 enable_testing()
 
@@ -37,41 +21,9 @@ add_executable     (TestGraph TestGraph.c++)
 add_custom_command (OUTPUT TestGraph.tmp COMMAND ${VALGRIND} TestGraph > TestGraph.tmp)
 add_custom_target  (TestGraph.c++x DEPENDS TestGraph.tmp)
 
-add_test (TestGraph.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../TestGraph.c++ --)
-add_test (TestGraph.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../TestGraph.c++ --)
-add_test (TestGraph        ${MAKE}                                          TestGraph.c++x)
-
-set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "TestGraph.bin" "TestGraph.plist")
-
-add_custom_target (versions)
-
-set (APPS
-    clang-check
-    clang-format
-    cmake
-    doxygen
-    g++
-    gcov
-    git
-    make
-    valgrind)
-
-foreach (app ${APPS})
-    add_custom_command (TARGET versions
-        COMMAND echo which ${app}
-        COMMAND      which ${app}
-        COMMAND echo ${app} --version
-        COMMAND      ${app} --version
-        COMMAND echo)
-endforeach ()
-
-set (PKGS
-    Boost
-    GTest)
-
-foreach (pkg ${PKGS})
-    add_custom_command (TARGET versions
-        COMMAND echo ${pkg}_VERSION
-        COMMAND echo ${${pkg}_VERSION}
-        COMMAND echo)
-endforeach ()
+add_test               (TestGraph.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../TestGraph.c++ --)
+add_test               (TestGraph.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../TestGraph.c++ --)
+add_test               (TestGraph        ${MAKE}                                          TestGraph.c++x)
+set_property           (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES              "TestGraph.plist")
+target_compile_options (TestGraph PRIVATE -pedantic -Wall -Weffc++)
+target_link_libraries  (TestGraph PRIVATE gtest gtest_main)
