@@ -31,7 +31,13 @@ set (FILES
     Stack
     Queue
     PriorityQueue
-    Vector1)
+    Vector1
+    Vector2
+    Vector3
+    Allocator
+    Vector4
+    Vector5
+    Pair)
 
 enable_testing()
 

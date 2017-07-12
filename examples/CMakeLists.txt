@@ -30,9 +30,9 @@ set (FILES
     Functions
     InitializerList
     Initializations
+    Auto
     Sets
     Maps
-    Auto
     Test)
 
 enable_testing()

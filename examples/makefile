@@ -19,9 +19,10 @@ FILES :=                    \
     Functions               \
     InitializerList         \
     Initializations         \
+    Auto                    \
     Sets                    \
     Maps                    \
-    Auto
+    Test
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
