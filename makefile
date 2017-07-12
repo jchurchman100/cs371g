@@ -127,6 +127,7 @@ status:
 
 sync:
 	@rsync -r -t -u -v --delete             \
+    --include "CMakeLists.txt"              \
     --include "Docker.txt"                  \
     --include "Hello.c++"                   \
     --include "Assertions.c++"              \
@@ -152,6 +153,7 @@ sync:
     --exclude "*"                           \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete             \
+    --include "CMakeLists.txt"              \
     --include "UnitTests1.c++"              \
     --include "UnitTests1.h"                \
     --include "UnitTests2.c++"              \
@@ -215,6 +217,7 @@ sync:
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
+    --include "CMakeLists.txt"              \
     --include "Collatz.c++"                 \
     --include "Collatz.h"                   \
     --include "RunCollatz.c++"              \
@@ -225,6 +228,7 @@ sync:
     --exclude "*"                           \
     ../../projects/c++/collatz/ projects/collatz
 	@rsync -r -t -u -v --delete             \
+    --include "CMakeLists.txt"              \
     --include "Integer.h"                   \
     --include "RunInteger.c++"              \
     --include "RunInteger.out"              \
@@ -233,12 +237,14 @@ sync:
     --exclude "*"                           \
     ../../projects/c++/integer/ projects/integer
 	@rsync -r -t -u -v --delete             \
+    --include "CMakeLists.txt"              \
     --include "Deque.h"                     \
     --include "TestDeque.c++"               \
     --include "TestDeque.out"               \
     --exclude "*"                           \
     ../../projects/c++/deque/ projects/deque
 	@rsync -r -t -u -v --delete             \
+    --include "CMakeLists.txt"              \
     --include "Graph.h"                     \
     --include "TestGraph.c++"               \
     --include "TestGraph.out"               \
