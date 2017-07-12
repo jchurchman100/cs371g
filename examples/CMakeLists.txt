@@ -32,8 +32,7 @@ set (FILES
     Initializations
     Auto
     Sets
-    Maps
-    Test)
+    Maps)
 
 enable_testing()
 

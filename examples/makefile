@@ -21,8 +21,7 @@ FILES :=                    \
     Initializations         \
     Auto                    \
     Sets                    \
-    Maps                    \
-    Test
+    Maps
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
