@@ -54,10 +54,10 @@ queue
 /*
 priority_queue
     push  -> push_back
-    pop   -> pop_front
+    pop   -> pop_heap, pop_back
     size
     empty
-    top -> back, one of them, const
+    top -> front, one of them, const
 
     highest or lowest priority pop
 
