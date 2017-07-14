@@ -127,7 +127,6 @@ status:
 
 sync:
 	@rsync -r -t -u -v --delete             \
-    --include "CMakeLists.txt"              \
     --include "Docker.txt"                  \
     --include "Hello.c++"                   \
     --include "Assertions.c++"              \
@@ -153,7 +152,6 @@ sync:
     --exclude "*"                           \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete             \
-    --include "CMakeLists.txt"              \
     --include "UnitTests1.c++"              \
     --include "UnitTests1.h"                \
     --include "UnitTests2.c++"              \
@@ -215,6 +213,10 @@ sync:
     --include "Vector5.h"                   \
     --include "Pair.c++"                    \
     --include "Pair.h"                      \
+    --include "BackInserter.c++"            \
+    --include "OStreamIterator.c++"         \
+    --include "IStreamIterator.c++"         \
+    --include "ReverseIterator.c++"         \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \

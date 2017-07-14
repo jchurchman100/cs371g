@@ -13,8 +13,7 @@
 #include <sstream>  // ostringstream
 #include <utility>  // pair
 
-#include "boost/graph/adjacency_list.hpp"  // adjacency_list
-#include "boost/graph/topological_sort.hpp"// topological_sort
+#include "boost/graph/adjacency_list.hpp" // adjacency_list
 
 #include "gtest/gtest.h"
 
