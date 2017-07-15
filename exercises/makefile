@@ -27,7 +27,8 @@ FILES :=          \
     Allocator     \
     Vector4       \
     Vector5       \
-    Pair
+    Pair          \
+    BackInserter
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

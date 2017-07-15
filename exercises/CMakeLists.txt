@@ -37,7 +37,8 @@ set (FILES
     Allocator
     Vector4
     Vector5
-    Pair)
+    Pair
+    BackInserter)
 
 enable_testing()
 

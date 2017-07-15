@@ -214,6 +214,7 @@ sync:
     --include "Pair.c++"                    \
     --include "Pair.h"                      \
     --include "BackInserter.c++"            \
+    --include "BackInserter.h"              \
     --include "OStreamIterator.c++"         \
     --include "IStreamIterator.c++"         \
     --include "ReverseIterator.c++"         \
