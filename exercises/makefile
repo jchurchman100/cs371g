@@ -1,34 +1,37 @@
 .DEFAULT_GOAL := all
 
-FILES :=          \
-    UnitTests3    \
-    Coverage1     \
-    Coverage2     \
-    Coverage3     \
-    IsPrime1      \
-    IsPrime2      \
-    StrCmp        \
-    Equal         \
-    Copy          \
-    Fill          \
-    Count         \
-    Reverse       \
-    RangeIterator \
-    Range         \
-    RMSE          \
-    Transform     \
-    Accumulate    \
-    Stack         \
-    Queue         \
-    PriorityQueue \
-    Vector1       \
-    Vector2       \
-    Vector3       \
-    Allocator     \
-    Vector4       \
-    Vector5       \
-    Pair          \
-    BackInserter
+FILES :=            \
+    UnitTests3      \
+    Coverage1       \
+    Coverage2       \
+    Coverage3       \
+    IsPrime1        \
+    IsPrime2        \
+    StrCmp          \
+    Equal           \
+    Copy            \
+    Fill            \
+    Count           \
+    Reverse         \
+    RangeIterator   \
+    Range           \
+    RMSE            \
+    Transform       \
+    Accumulate      \
+    Stack           \
+    Queue           \
+    PriorityQueue   \
+    Vector1         \
+    Vector2         \
+    Vector3         \
+    Allocator       \
+    Vector4         \
+    Vector5         \
+    Pair            \
+    BackInserter    \
+    OStreamIterator \
+    IStreamIterator \
+    ReverseIterator
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

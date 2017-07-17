@@ -216,9 +216,11 @@ sync:
     --include "BackInserter.c++"            \
     --include "BackInserter.h"              \
     --include "OStreamIterator.c++"         \
+    --include "OStreamIterator.h"           \
     --include "IStreamIterator.c++"         \
+    --include "IStreamIterator.h"           \
     --include "ReverseIterator.c++"         \
-    --include "ReverseIterator.h"         \
+    --include "ReverseIterator.h"           \
     --include "UniquePtr.c++"               \
     --include "SharedPtr.c++"               \
     --exclude "*"                           \
