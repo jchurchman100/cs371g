@@ -1,9 +1,14 @@
-cmake_minimum_required (VERSION 3.8.2)
+cmake_minimum_required (VERSION 3.5.1)
 
 project (Integer CXX)
 
+find_package(GTest REQUIRED)
+
 find_program (CLANG-CHECK clang-check)
 message(${CLANG-CHECK})
+
+find_program (GCOV gcov)
+message (${GCOV})
 
 find_program(MAKE make)
 message(${MAKE})
@@ -11,29 +16,48 @@ message(${MAKE})
 find_program(VALGRIND valgrind)
 message(${VALGRIND})
 
-set (CMAKE_CXX_STANDARD          14)
-set (CMAKE_CXX_STANDARD_REQUIRED ON)
-set (CMAKE_CXX_EXTENSIONS        OFF)
+set (CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
+set (CMAKE_CXX_STANDARD                 14)
+set (CMAKE_CXX_STANDARD_REQUIRED        ON)
+set (CMAKE_CXX_EXTENSIONS               OFF)
 
-enable_testing()
+set (DIR ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY})
+message (${DIR})
 
-add_executable     (RunInteger RunInteger.c++)
-add_custom_command (OUTPUT RunInteger.tmp COMMAND RunInteger < ../RunInteger.in > RunInteger.tmp)
-add_custom_target  (RunInteger.c++x diff RunInteger.tmp ../RunInteger.out DEPENDS RunInteger.tmp)
+add_custom_target (run)
 
-add_test               (RunInteger.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../RunInteger.c++ --)
-add_test               (RunInteger.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../RunInteger.c++ --)
-add_test               (RunInteger        ${MAKE}                                          RunInteger.c++x)
-set_property           (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES             "RunInteger.plist")
-target_compile_options (RunInteger PRIVATE -pedantic -Wall -Weffc++)
+add_executable (RunInteger RunInteger.c++)
+target_compile_options (RunInteger PUBLIC -fprofile-arcs -ftest-coverage -pedantic -Wall -Weffc++)
+target_link_libraries  (RunInteger PUBLIC -fprofile-arcs -ftest-coverage GTest::GTest GTest::Main)
+add_custom_command (TARGET RunInteger
+    COMMAND echo ${CLANG-CHECK} -extra-arg=-std=c++11          ../RunInteger.c++ --
+    COMMAND      ${CLANG-CHECK} -extra-arg=-std=c++11          ../RunInteger.c++ --
+    COMMAND echo ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../RunInteger.c++ --
+    COMMAND      ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../RunInteger.c++ --)
+add_custom_target (RunInteger.c++x
+    COMMAND echo ./RunInteger '>' RunInteger.tmp
+    COMMAND      ./RunInteger  >  RunInteger.tmp
+    COMMAND echo diff RunInteger.tmp ../RunInteger.out
+    COMMAND      diff RunInteger.tmp ../RunInteger.out)
+add_dependencies (RunInteger.c++x RunInteger)
+add_custom_command (TARGET run
+    COMMAND ${MAKE} RunInteger.c++x)
+set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "RunInteger.plist" "RunInteger.tmp")
 
-add_executable     (TestInteger TestInteger.c++)
-add_custom_command (OUTPUT TestInteger.tmp COMMAND ${VALGRIND} TestInteger > TestInteger.tmp)
-add_custom_target  (TestInteger.c++x DEPENDS TestInteger.tmp)
-
-add_test               (TestInteger.check1 ${CLANG-CHECK} -extra-arg=-std=c++11          ../TestInteger.c++ --)
-add_test               (TestInteger.check2 ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../TestInteger.c++ --)
-add_test               (TestInteger        ${MAKE}                                          TestInteger.c++x)
-set_property           (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES              "TestInteger.plist")
-target_compile_options (TestInteger PRIVATE -pedantic -Wall -Weffc++)
-target_link_libraries  (TestInteger PRIVATE gtest gtest_main)
+add_executable (TestInteger TestInteger.c++)
+target_compile_options (TestInteger PUBLIC -fprofile-arcs -ftest-coverage -pedantic -Wall -Weffc++)
+target_link_libraries  (TestInteger PUBLIC -fprofile-arcs -ftest-coverage GTest::GTest GTest::Main)
+add_custom_command (TARGET TestInteger
+    COMMAND echo ${CLANG-CHECK} -extra-arg=-std=c++11          ../TestInteger.c++ --
+    COMMAND      ${CLANG-CHECK} -extra-arg=-std=c++11          ../TestInteger.c++ --
+    COMMAND echo ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../TestInteger.c++ --
+    COMMAND      ${CLANG-CHECK} -extra-arg=-std=c++11 -analyze ../TestInteger.c++ --)
+add_custom_target (TestInteger.c++x
+    COMMAND echo ${VALGRIND} ./TestInteger
+    COMMAND      ${VALGRIND} ./TestInteger
+    COMMAND echo ${GCOV} -b -o ${DIR}/TestInteger.dir TestInteger.c++ '|' grep -A 5 '"'File "'".*Integer.h"'"'"'
+    COMMAND      ${GCOV} -b -o ${DIR}/TestInteger.dir TestInteger.c++  |  grep -A 5   "File '.*Integer.h'")
+add_dependencies (TestInteger.c++x TestInteger)
+add_custom_command (TARGET run
+    COMMAND ${MAKE} TestInteger.c++x)
+set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "TestInteger.dSYM" "TestInteger.plist")

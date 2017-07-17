@@ -218,6 +218,9 @@ sync:
     --include "OStreamIterator.c++"         \
     --include "IStreamIterator.c++"         \
     --include "ReverseIterator.c++"         \
+    --include "ReverseIterator.h"         \
+    --include "UniquePtr.c++"               \
+    --include "SharedPtr.c++"               \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
