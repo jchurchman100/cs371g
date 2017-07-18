@@ -2,6 +2,7 @@
 
 FILES :=                    \
     Hello                   \
+    Assertions              \
     Exceptions              \
     Exceptions2             \
     Exceptions3             \
@@ -77,6 +78,9 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
+Returns: Returns.c++
+	$(CXX) $(CXXFLAGS) -Wno-return-stack-address $< -o $@ $(LDFLAGS)
+
 %: %.c++
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
@@ -92,11 +96,49 @@ clean:
 	rm -f *.plist
 	rm -f $(FILES)
 
-test: $(FILES:=.c++x)
+docker:
+	docker run -it -v $(PWD):/usr/examples -w /usr/examples gpdowning/gcc
+
+run: $(FILES:=.c++x)
 
 travis:
 	make clean
 	ls -al
-	make
-	ls -al
-	make test
+	make run
+
+versions:
+	which cmake
+	cmake --version
+	@echo
+	which make
+	make --version
+	@echo
+	which git
+	git --version
+	@echo
+	which $(CXX)
+	$(CXX) --version
+	@echo
+	ls -adl $(INCLUDE)/boost
+	@echo
+	ls -adl $(INCLUDE)/gtest
+	@echo
+	ls -al $(LIBB)/libboost_serialization.a
+	@echo
+	ls -al $(LIBG)/libgtest.a
+	ls -al $(LIBG)/libgtest_main.a
+	@echo
+	which $(CLANG-CHECK)
+	-$(CLANG-CHECK) --version
+	@echo
+	which $(GCOV)
+	$(GCOV) --version
+	@echo
+	which $(VALGRIND)
+	$(VALGRIND) --version
+	@echo
+	which $(DOXYGEN)
+	$(DOXYGEN) --version
+	@echo
+	which $(CLANG-FORMAT)
+	-$(CLANG-FORMAT) --version

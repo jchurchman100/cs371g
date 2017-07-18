@@ -95,19 +95,18 @@ RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunCollatz.c++  --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunCollatz.c++  --
 
-RunCollatz.tmp: RunCollatz
+RunCollatz.c++x: RunCollatz
 	./RunCollatz < RunCollatz.in > RunCollatz.tmp
 	-diff RunCollatz.tmp RunCollatz.out
 
 TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Collatz.c++ TestCollatz.c++ -o TestCollatz $(LDFLAGS)
+	$(CXX) $(GCOVFLAGS) $(CXXFLAGS) Collatz.c++ TestCollatz.c++ -o TestCollatz $(LDFLAGS)
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestCollatz.c++ --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestCollatz.c++ --
 
-TestCollatz.tmp: TestCollatz
-	$(VALGRIND) ./TestCollatz                                  >  TestCollatz.tmp 2>&1
-	-$(GCOV) -b Collatz.c++ | grep -A 5 "File '.*Collatz.c++'" >> TestCollatz.tmp
-	cat TestCollatz.tmp
+TestCollatz.c++x: TestCollatz
+	$(VALGRIND) ./TestCollatz
+	-$(GCOV) -b Collatz.c++ | grep -A 5 "File '.*Collatz.c++'"
 
 all: RunCollatz TestCollatz
 
@@ -145,13 +144,15 @@ config:
 	git config -l
 
 docker:
-	docker run -it -v $(PWD):/usr/cs371g -w /usr/cs371g gpdowning/gcc
+	docker run -it -v $(PWD):/usr/collatz -w /usr/collatz gpdowning/gcc
 
 format:
 	$(CLANG-FORMAT) -i Collatz.c++
 	$(CLANG-FORMAT) -i Collatz.h
 	$(CLANG-FORMAT) -i RunCollatz.c++
 	$(CLANG-FORMAT) -i TestCollatz.c++
+
+run: RunCollatz.c++x TestCollatz.c++x
 
 scrub:
 	make clean
@@ -167,14 +168,10 @@ status:
 	git remote -v
 	git status
 
-test: RunCollatz.tmp TestCollatz.tmp
-
 travis: collatz-tests html Collatz.log
 	make clean
 	ls -al
-	make
-	ls -al
-	make test
+	make run
 	ls -al
 	make check
 
@@ -191,13 +188,14 @@ versions:
 	which $(CXX)
 	$(CXX) --version
 	@echo
-	ls -ald $(INCLUDE)/boost
+	ls -adl $(INCLUDE)/boost
 	@echo
-	ls -ald $(INCLUDE)/gtest
+	ls -adl $(INCLUDE)/gtest
 	@echo
-	ls -al $(LIBB)/*boost*
+	ls -al $(LIBB)/libboost_serialization.a
 	@echo
-	ls -al $(LIBG)/*gtest*
+	ls -al $(LIBG)/libgtest.a
+	ls -al $(LIBG)/libgtest_main.a
 	@echo
 	which $(CLANG-CHECK)
 	-$(CLANG-CHECK) --version

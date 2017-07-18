@@ -13,6 +13,7 @@ FILES :=            \
     Fill            \
     Count           \
     Reverse         \
+    Distance        \
     RangeIterator   \
     Range           \
     RMSE            \
@@ -31,7 +32,9 @@ FILES :=            \
     BackInserter    \
     OStreamIterator \
     IStreamIterator \
-    ReverseIterator
+    ReverseIterator \
+    UniquePtr       \
+    SharedPtr
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
@@ -106,11 +109,49 @@ clean:
 	rm -f *.plist
 	rm -f $(FILES)
 
-test: $(FILES:=.c++x)
+docker:
+	docker run -it -v $(PWD):/usr/exercises -w /usr/exercises gpdowning/gcc
+
+run: $(FILES:=.c++x)
 
 travis:
 	make clean
 	ls -al
-	make
-	ls -al
-	make test
+	make run
+
+versions:
+	which cmake
+	cmake --version
+	@echo
+	which make
+	make --version
+	@echo
+	which git
+	git --version
+	@echo
+	which $(CXX)
+	$(CXX) --version
+	@echo
+	ls -adl $(INCLUDE)/boost
+	@echo
+	ls -adl $(INCLUDE)/gtest
+	@echo
+	ls -al $(LIBB)/libboost_serialization.a
+	@echo
+	ls -al $(LIBG)/libgtest.a
+	ls -al $(LIBG)/libgtest_main.a
+	@echo
+	which $(CLANG-CHECK)
+	-$(CLANG-CHECK) --version
+	@echo
+	which $(GCOV)
+	$(GCOV) --version
+	@echo
+	which $(VALGRIND)
+	$(VALGRIND) --version
+	@echo
+	which $(DOXYGEN)
+	$(DOXYGEN) --version
+	@echo
+	which $(CLANG-FORMAT)
+	-$(CLANG-FORMAT) --version
