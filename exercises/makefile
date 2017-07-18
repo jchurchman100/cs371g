@@ -13,7 +13,6 @@ FILES :=            \
     Fill            \
     Count           \
     Reverse         \
-    Distance        \
     RangeIterator   \
     Range           \
     RMSE            \
@@ -32,9 +31,7 @@ FILES :=            \
     BackInserter    \
     OStreamIterator \
     IStreamIterator \
-    ReverseIterator \
-    UniquePtr       \
-    SharedPtr
+    ReverseIterator
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

@@ -56,9 +56,7 @@ set (FILES
     Pair
     BackInserter
     OStreamIterator
-    IStreamIterator
-    UniquePtr
-    SharedPtr)
+    IStreamIterator)
 
 add_custom_target (run)
 

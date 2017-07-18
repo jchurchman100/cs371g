@@ -3,10 +3,10 @@
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
     INCLUDE      := /usr/local/include
-    CXXFLAGS     := -pedantic -std=c++14 -I$(INCLUDE) -Wall -Weffc++
+    CXXFLAGS     := -pedantic -std=c++14 -Wall -Weffc++
     LIBB         := /usr/local/lib
     LIBG         := /usr/local/lib
-    LDFLAGS      := -lboost_serialization -lgtest_main
+    LDFLAGS      := -lboost_serialization -lgtest -lgtest_main
     CLANG-CHECK  := clang-check
     GCOV         := gcov
     GCOVFLAGS    := -fprofile-arcs -ftest-coverage
@@ -117,6 +117,19 @@ push:
 	git commit -m "another commit"
 	git push
 	git status
+
+run:
+	cd examples; make run
+	@echo
+	cd exercises; make run
+	@echo
+	cd projects/collatz; make run
+	@echo
+	cd projects/integer; make run
+	@echo
+	cd projects/deque; make run
+	@echo
+	cd projects/graph; make run
 
 status:
 	make clean
@@ -260,19 +273,6 @@ sync:
     --exclude "*"                           \
     ../../projects/c++/graph/ projects/graph
 
-test:
-	cd examples; make test
-	@echo
-	cd exercises; make test
-	@echo
-	cd projects/collatz; make test
-	@echo
-	cd projects/integer; make test
-	@echo
-	cd projects/deque; make test
-	@echo
-	cd projects/graph; make test
-
 travis:
 	cd examples; make travis
 	@echo
@@ -299,13 +299,14 @@ versions:
 	which $(CXX)
 	$(CXX) --version
 	@echo
-	ls -ald $(INCLUDE)/boost
+	ls -adl $(INCLUDE)/boost
 	@echo
-	ls -ald $(INCLUDE)/gtest
+	ls -adl $(INCLUDE)/gtest
 	@echo
-	ls -al $(LIBB)/*boost*
+	ls -al $(LIBB)/libboost_serialization.a
 	@echo
-	ls -al $(LIBG)/*gtest*
+	ls -al $(LIBG)/libgtest.a
+	ls -al $(LIBG)/libgtest_main.a
 	@echo
 	which $(CLANG-CHECK)
 	-$(CLANG-CHECK) --version
