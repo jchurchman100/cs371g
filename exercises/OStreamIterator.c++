@@ -4,7 +4,7 @@
 
 #include <algorithm>        // copy
 #include <initializer_list> // initializer_list
-#include <iterator>         // ostream_iterator,
+#include <iterator>         // ostream_iterator
 #include <sstream>          // ostringstream
 
 #include "gtest/gtest.h"

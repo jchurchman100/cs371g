@@ -2,6 +2,7 @@
 
 FILES :=            \
     .gitignore      \
+    collatz-tests   \
     Collatz.c++     \
     Collatz.h       \
     Collatz.log     \
@@ -110,24 +111,7 @@ TestCollatz.c++x: TestCollatz
 
 all: RunCollatz TestCollatz
 
-check:
-	@not_found=0;                                 \
-    for i in $(FILES);                            \
-    do                                            \
-        if [ -e $$i ];                            \
-        then                                      \
-            echo "$$i found";                     \
-        else                                      \
-            echo "$$i NOT FOUND";                 \
-            not_found=`expr "$$not_found" + "1"`; \
-        fi                                        \
-    done;                                         \
-    if [ $$not_found -ne 0 ];                     \
-    then                                          \
-        echo "$$not_found failures";              \
-        exit 1;                                   \
-    fi;                                           \
-    echo "success";
+check: $(FILES)
 
 clean:
 	rm -f  *.gcda
@@ -173,7 +157,7 @@ travis: collatz-tests html Collatz.log
 	ls -al
 	make run
 	ls -al
-	make check
+	make -r check
 
 versions:
 	which cmake
