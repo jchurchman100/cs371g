@@ -26,8 +26,9 @@ class my_unique_ptr {
 
         my_unique_ptr (const my_unique_ptr&) = delete;
 
-        my_unique_ptr (my_unique_ptr&& rhs) {
-            swap(rhs);}
+        my_unique_ptr (my_unique_ptr&& rhs) :
+                _d (std::move(rhs._d)) {
+            std::swap(_p, rhs._p);}
 
         my_unique_ptr& operator = (const my_unique_ptr&) = delete;
 
