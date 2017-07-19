@@ -111,7 +111,7 @@ format:
 	$(CLANG-FORMAT) -i Deque.h
 	$(CLANG-FORMAT) -i TestDeque.c++
 
-test: TestDeque.c++x
+run: TestDeque.c++x
 
 scrub:
 	make clean
