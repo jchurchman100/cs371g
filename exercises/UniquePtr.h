@@ -15,7 +15,7 @@ class my_unique_ptr {
         using element_type = T;
 
     private:
-        T* _p;
+        T* _p = nullptr;
         D  _d;
 
     public:
@@ -26,10 +26,8 @@ class my_unique_ptr {
 
         my_unique_ptr (const my_unique_ptr&) = delete;
 
-        my_unique_ptr (my_unique_ptr&& rhs) :
-                _p (rhs._p),
-                _d (std::move(rhs._d)) {
-            rhs._p = nullptr;}
+        my_unique_ptr (my_unique_ptr&& rhs) {
+            swap(rhs);}
 
         my_unique_ptr& operator = (const my_unique_ptr&) = delete;
 

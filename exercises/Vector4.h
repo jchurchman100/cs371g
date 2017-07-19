@@ -164,8 +164,12 @@ class my_vector {
             return end() - begin();}
 
         void swap (my_vector& rhs) {
-            std::swap(_a, rhs._a);
-            std::swap(_b, rhs._b);
-            std::swap(_e, rhs._e);}};
+            if (_a == rhs._a) {
+                std::swap(_b, rhs._b);
+                std::swap(_e, rhs._e);}
+            else {
+                my_vector x(*this);
+                *this = rhs;
+                rhs   = x;}}};
 
 #endif // Vector_h

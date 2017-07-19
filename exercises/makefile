@@ -31,7 +31,8 @@ FILES :=            \
     BackInserter    \
     OStreamIterator \
     IStreamIterator \
-    ReverseIterator
+    ReverseIterator \
+    UniquePtr
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

@@ -235,7 +235,7 @@ sync:
     --include "ReverseIterator.c++"         \
     --include "ReverseIterator.h"           \
     --include "UniquePtr.c++"               \
-    --include "UniquePtr.h"               \
+    --include "UniquePtr.h"                 \
     --include "SharedPtr.c++"               \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
