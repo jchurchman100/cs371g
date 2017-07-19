@@ -80,42 +80,23 @@ Doxyfile:
 	# set EXTRACT_STATEIC to YES
 
 TestDeque: Deque.h TestDeque.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) TestDeque.c++ -o TestDeque $(LDFLAGS)
+	$(CXX) $(GCOVFLAGS) $(CXXFLAGS) TestDeque.c++ -o TestDeque $(LDFLAGS)
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestDeque.c++ --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestDeque.c++ --
 
-TestDeque.tmp: TestDeque
-	$(VALGRIND) ./TestDeque                                  >  TestDeque.tmp 2>&1
-	-$(GCOV) -b TestDeque.c++ | grep -A 5 "File '.*Deque.h'" >> TestDeque.tmp
-	cat TestDeque.tmp
+TestDeque.c++x: TestDeque
+	$(VALGRIND) ./TestDeque
+	-$(GCOV) -b TestDeque.c++ | grep -A 5 "File '.*Deque.h'"
 
 all: TestDeque
 
-check:
-	@not_found=0;                                 \
-    for i in $(FILES);                            \
-    do                                            \
-        if [ -e $$i ];                            \
-        then                                      \
-            echo "$$i found";                     \
-        else                                      \
-            echo "$$i NOT FOUND";                 \
-            not_found=`expr "$$not_found" + "1"`; \
-        fi                                        \
-    done;                                         \
-    if [ $$not_found -ne 0 ];                     \
-    then                                          \
-        echo "$$not_found failures";              \
-        exit 1;                                   \
-    fi;                                           \
-    echo "success";
+check: $(FILES)
 
 clean:
 	rm -f  *.gcda
 	rm -f  *.gcno
 	rm -f  *.gcov
 	rm -f  *.plist
-	rm -f  *.tmp
 	rm -f  TestDeque
 	rm -rf *.dSYM
 	rm -rf latex
@@ -124,11 +105,13 @@ config:
 	git config -l
 
 docker:
-	docker run -it -v $(PWD):/usr/cs371g -w /usr/cs371g gpdowning/gcc
+	docker run -it -v $(PWD):/usr/deque -w /usr/deque gpdowning/gcc
 
 format:
 	$(CLANG-FORMAT) -i Deque.h
 	$(CLANG-FORMAT) -i TestDeque.c++
+
+test: TestDeque.c++x
 
 scrub:
 	make clean
@@ -143,16 +126,14 @@ status:
 	git remote -v
 	git status
 
-test: TestDeque.tmp
-
 travis: html Deque.log
 	make clean
 	ls -al
 	make
 	ls -al
-	make test
+	make run
 	ls -al
-	make check
+	make -r check
 
 versions:
 	which cmake
@@ -167,13 +148,14 @@ versions:
 	which $(CXX)
 	$(CXX) --version
 	@echo
-	ls -ald $(INCLUDE)/boost
+	ls -adl $(INCLUDE)/boost
 	@echo
-	ls -ald $(INCLUDE)/gtest
+	ls -adl $(INCLUDE)/gtest
 	@echo
-	ls -al $(LIBB)/*boost*
+	ls -al $(LIBB)/libboost_serialization.a
 	@echo
-	ls -al $(LIBG)/*gtest*
+	ls -al $(LIBG)/libgtest.a
+	ls -al $(LIBG)/libgtest_main.a
 	@echo
 	which $(CLANG-CHECK)
 	-$(CLANG-CHECK) --version

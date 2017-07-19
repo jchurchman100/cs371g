@@ -2,6 +2,7 @@
 
 FILES :=            \
     .gitignore      \
+    integer-tests   \
     Integer.h       \
     Integer.log     \
     html            \
@@ -90,40 +91,22 @@ RunInteger: Integer.h RunInteger.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunInteger.c++  --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunInteger.c++  --
 
-RunInteger.tmp: RunInteger
+RunInteger.c++x: RunInteger
 	./RunInteger > RunInteger.tmp
 	-diff RunInteger.tmp RunInteger.out
 
 TestInteger: Integer.h TestInteger.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) TestInteger.c++ -o TestInteger $(LDFLAGS)
+	$(CXX) $(GCOVFLAGS) $(CXXFLAGS) TestInteger.c++ -o TestInteger $(LDFLAGS)
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestInteger.c++ --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestInteger.c++ --
 
-TestInteger.tmp: TestInteger
-	$(VALGRIND) ./TestInteger                                    >  TestInteger.tmp 2>&1
-	-$(GCOV) -b TestInteger.c++ | grep -A 5 "File '.*Integer.h'" >> TestInteger.tmp
-	cat TestInteger.tmp
+TestInteger.c++x: TestInteger
+	$(VALGRIND) ./TestInteger
+	-$(GCOV) -b TestInteger.c++ | grep -A 5 "File '.*Integer.h'"
 
 all: RunInteger TestInteger
 
-check:
-	@not_found=0;                                 \
-    for i in $(FILES);                            \
-    do                                            \
-        if [ -e $$i ];                            \
-        then                                      \
-            echo "$$i found";                     \
-        else                                      \
-            echo "$$i NOT FOUND";                 \
-            not_found=`expr "$$not_found" + "1"`; \
-        fi                                        \
-    done;                                         \
-    if [ $$not_found -ne 0 ];                     \
-    then                                          \
-        echo "$$not_found failures";              \
-        exit 1;                                   \
-    fi;                                           \
-    echo "success";
+check: $(FILES)
 
 clean:
 	rm -f  *.gcda
@@ -140,12 +123,14 @@ config:
 	git config -l
 
 docker:
-	docker run -it -v $(PWD):/usr/cs371g -w /usr/cs371g gpdowning/gcc
+	docker run -it -v $(PWD):/usr/integer -w /usr/integer gpdowning/gcc
 
 format:
 	$(CLANG-FORMAT) -i Integer.h
 	$(CLANG-FORMAT) -i RunInteger.c++
 	$(CLANG-FORMAT) -i TestInteger.c++
+
+run: RunInteger.c++x TestInteger.c++x
 
 scrub:
 	make clean
@@ -161,16 +146,14 @@ status:
 	git remote -v
 	git status
 
-test: RunInteger.tmp TestInteger.tmp
-
 travis: integer-tests html Integer.log
 	make clean
 	ls -al
 	make
 	ls -al
-	make test
+	make run
 	ls -al
-	make check
+	make -r check
 
 versions:
 	which cmake
@@ -185,13 +168,14 @@ versions:
 	which $(CXX)
 	$(CXX) --version
 	@echo
-	ls -ald $(INCLUDE)/boost
+	ls -adl $(INCLUDE)/boost
 	@echo
-	ls -ald $(INCLUDE)/gtest
+	ls -adl $(INCLUDE)/gtest
 	@echo
-	ls -al $(LIBB)/*boost*
+	ls -al $(LIBB)/libboost_serialization.a
 	@echo
-	ls -al $(LIBG)/*gtest*
+	ls -al $(LIBG)/libgtest.a
+	ls -al $(LIBG)/libgtest_main.a
 	@echo
 	which $(CLANG-CHECK)
 	-$(CLANG-CHECK) --version

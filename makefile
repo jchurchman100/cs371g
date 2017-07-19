@@ -239,7 +239,6 @@ sync:
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
-    --include "CMakeLists.txt"              \
     --include "Collatz.c++"                 \
     --include "Collatz.h"                   \
     --include "RunCollatz.c++"              \
@@ -250,7 +249,6 @@ sync:
     --exclude "*"                           \
     ../../projects/c++/collatz/ projects/collatz
 	@rsync -r -t -u -v --delete             \
-    --include "CMakeLists.txt"              \
     --include "Integer.h"                   \
     --include "RunInteger.c++"              \
     --include "RunInteger.out"              \
@@ -259,14 +257,12 @@ sync:
     --exclude "*"                           \
     ../../projects/c++/integer/ projects/integer
 	@rsync -r -t -u -v --delete             \
-    --include "CMakeLists.txt"              \
     --include "Deque.h"                     \
     --include "TestDeque.c++"               \
     --include "TestDeque.out"               \
     --exclude "*"                           \
     ../../projects/c++/deque/ projects/deque
 	@rsync -r -t -u -v --delete             \
-    --include "CMakeLists.txt"              \
     --include "Graph.h"                     \
     --include "TestGraph.c++"               \
     --include "TestGraph.out"               \
