@@ -1,87 +1,56 @@
 // -----------
-// Mon, 17 Jul
+// Wed, 19 Jul
 // -----------
 
-/*
-iterator adapters
-*/
+vector<int> x = {2, 3, 4};
+vector<int>::iterator b = begin(x);
+vector<int>::iterator e = end(x);
+cout << *b;
+cout << *e; // not ok
 
-vector<int>                       x(10, 2);
-vector<int>                       y;
-back_insert_iterator<vector<int>> p(x);
-copy(begin(x), end(x), back_inserter(y));
+// smart pointers
 
-cout << 2;
+int* p = new int;
+delete p;
 
-template <typename T, typename C = char>
-class ostream_iterator {
+int* a = new int[s];
+delete [] a;
+
+template <typename T, typename D = default_delete<T>>
+class unique_ptr {
     private:
-        C*        _p;
-        ostream& _o;
+        T* _p = nullptr;
+        D  _d;
 
     public:
-        ostream_iterator (ostream& o, C* p = nullptr) :
-            _o (o),
-            _p (p)
+        unique_ptr (T* p, const D& d = D()) :
+            _p (p),
+            _d (d)
             {}
 
-        ostream_iterator& operator * () {
-            return *this;}
+        unique_ptr (const unique_ptr&) = delete;
+        unique_ptr& operator = (const unique_ptr&) = delete;
 
-        ostream_iteartor operator = (const T& v) {
-            _o << v;
-            if (_p)
-                _o << *p;}
+        ~unique_ptr () {
+            _d(_p);}
 
-int i;
-cin >> i;
-if (cin)
-    <succeeded>
-if (!cin)
-    <failed>
+        unique_ptr (unique_ptr&& rhs) :
+            _d (move(rhs._d)) {
+            swap(_p, rhs._p);}
 
-template <typename T>
-class istream_iterator {
-    friend bool operator == (const istream_iterator& lhs, const istream_iterator& rhs) {
-        return (lhs._p == rhs._p);
-
-    private:
-        istream* _p;
-        T        _v;
-
-    public:
-        istream_iterator () :
-            _p (nullptr)
-            {}
-
-        istream_iterator (istream& in) :
-            _p (&in)
-            {++*this;}
-
-        T operator * () {
-            return _v;}
-
-        istream_iterator& operator ++ () {
-            assert(_p);
-            if (!(*_p >> _v))
-                _p = nullptr;
-            return *this;}
-
-string s("abc")
-string t("abc")
-s == t
-s == "abc"
-"abc" == s
+        unique_ptr& operator = (unique_ptr&& rhs) {
+            if (_p == rhs._p)
+                return *this;
+            _d(_p);
+            _d = move(rhs._d);
+            _p(rhs._p);
+            rhs._p = nullptr;}
 
 // ---------
 // Questions
 // ---------
 
 /*
-What is ostream_iterator?
-What is istream_iterator?
-What happens when a read fails?
-In what operator does istream_iterator read?
-What is reverse_iterator?
-What is the minimum requirement iterator for reverse_iterator?
+What is unique_ptr?
+What operations are turned off? How are they turned off?
 */
