@@ -15,11 +15,21 @@ class my_unique_ptr {
         using element_type = T;
 
     private:
-        T* _p = nullptr;
+        T* _p;
         D  _d;
 
     public:
-        explicit my_unique_ptr (T* p, D d = D()) :
+        my_unique_ptr () :
+                _p (nullptr),
+                _d ()
+            {}
+
+        explicit my_unique_ptr (T* p) :
+                _p (p),
+                _d ()
+            {}
+
+        my_unique_ptr (T* p, D d) :
                 _p (p),
                 _d (d)
             {}
@@ -27,23 +37,34 @@ class my_unique_ptr {
         my_unique_ptr (const my_unique_ptr&) = delete;
 
         my_unique_ptr (my_unique_ptr&& rhs) :
-                _d (std::move(rhs._d)) {
-            std::swap(_p, rhs._p);}
+                _p (rhs.release()),
+                _d (std::move(rhs._d))
+            {}
 
         my_unique_ptr& operator = (const my_unique_ptr&) = delete;
 
         my_unique_ptr& operator = (my_unique_ptr&& rhs) {
             if (this == &rhs)
                 return *this;
-            my_unique_ptr that(std::move(rhs));
-            swap(that);
+            reset(rhs.release());
+             _d = std::move(rhs._d);
             return *this;}
 
         ~my_unique_ptr () {
-            _d(_p);}
+            reset();}
 
         T* get () const {
             return _p;}
+
+        T* release () {
+            T* p = _p;
+            _p = nullptr;
+            return p;}
+
+        void reset (T* p = nullptr) {
+            if (_p != nullptr)
+                _d(_p);
+            _p = p;}
 
         void swap (my_unique_ptr& that) {
             std::swap(_p, that._p);

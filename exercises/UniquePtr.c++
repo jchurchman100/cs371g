@@ -68,7 +68,7 @@ TYPED_TEST(UniquePtrFixture, test_2) {
 //  unique_ptr_type y = x;       // error: call to implicitly-deleted copy constructor of 'unique_ptr_type'
 //  unique_ptr_type y(x);        // error: call to implicitly-deleted copy constructor of 'unique_ptr_type'
     unique_ptr_type y = move(x);
-    ASSERT_EQ(1, A::c);
+    ASSERT_EQ(1,       A::c);
     ASSERT_EQ(nullptr, x.get());
     }
     ASSERT_EQ(0, A::c);}
@@ -82,7 +82,7 @@ TYPED_TEST(UniquePtrFixture, test_3) {
     ASSERT_EQ(2, A::c);
 //  x = y;                       // error: object of type 'std::__1::unique_ptr<A, std::__1::default_delete<A> >' cannot be assigned because its copy assignment operator is implicitly deleted
     x = move(y);
-    ASSERT_EQ(1, A::c);
+    ASSERT_EQ(1,       A::c);
     ASSERT_EQ(nullptr, y.get());
     }
     ASSERT_EQ(0, A::c);}
@@ -96,7 +96,7 @@ TYPED_TEST(UniquePtrFixture2, test_4) {
     ASSERT_EQ(2, A::c);
 //  x = y;                       // error: object of type 'std::__1::unique_ptr<A, std::__1::default_delete<A> >' cannot be assigned because its copy assignment operator is implicitly deleted
     x = move(y);
-    ASSERT_EQ(1, A::c);
+    ASSERT_EQ(1,       A::c);
     ASSERT_EQ(nullptr, y.get());
     }
     ASSERT_EQ(0, A::c);}
