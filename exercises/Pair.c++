@@ -37,8 +37,8 @@ TYPED_TEST(Pair_Fixture, test_1) {
     pair_type   x;
     first_type  f = x.first;
     second_type s = x.second;
-    ASSERT_EQ(f, 0);
-    ASSERT_EQ(s, 0);}
+    ASSERT_EQ(0, f);
+    ASSERT_EQ(0, s);}
 
 TYPED_TEST(Pair_Fixture, test_2) {
     using pair_type   = typename TestFixture::pair_type;
@@ -48,16 +48,16 @@ TYPED_TEST(Pair_Fixture, test_2) {
     pair_type   x = {2, 3};
     first_type  f = x.first;
     second_type s = x.second;
-    ASSERT_EQ(f, 2);
-    ASSERT_EQ(s, 3);}
+    ASSERT_EQ(2, f);
+    ASSERT_EQ(3, s);}
 
 TYPED_TEST(Pair_Fixture, test_3) {
     using pair_type = typename TestFixture::pair_type;
 
     pair_type x = {2, 3};
     pair_type y = x;
-    ASSERT_EQ(y.first,  2);
-    ASSERT_EQ(y.second, 3);
+    ASSERT_EQ(2, y.first);
+    ASSERT_EQ(3, y.second);
     ASSERT_NE(&x.first,  &y.first);
     ASSERT_NE(&x.second, &y.second);}
 
@@ -67,8 +67,8 @@ TYPED_TEST(Pair_Fixture, test_4) {
     pair_type x = {2, 3};
     pair_type y = {4, 5};
     y = x;
-    ASSERT_EQ(y.first,  2);
-    ASSERT_EQ(y.second, 3);
+    ASSERT_EQ(2, y.first);
+    ASSERT_EQ(3, y.second);
     ASSERT_NE(&x.first,  &y.first);
     ASSERT_NE(&x.second, &y.second);}
 

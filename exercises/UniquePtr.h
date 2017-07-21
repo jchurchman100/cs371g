@@ -62,9 +62,10 @@ class my_unique_ptr {
             return p;}
 
         void reset (T* p = nullptr) {
-            if (_p != nullptr)
-                _d(_p);
-            _p = p;}
+            if (_p != p) {
+                if (_p != nullptr)
+                    _d(_p);
+                _p = p;}}
 
         void swap (my_unique_ptr& that) {
             std::swap(_p, that._p);

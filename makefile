@@ -237,6 +237,7 @@ sync:
     --include "UniquePtr.c++"               \
     --include "UniquePtr.h"                 \
     --include "SharedPtr.c++"               \
+    --include "SharedPtr.h"               \
     --exclude "*"                           \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete             \
